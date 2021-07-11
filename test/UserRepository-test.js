@@ -21,12 +21,11 @@ describe('User Repository', () => {
     expect(userRepo.data).to.deep.equal(userTestData);
   });
 
-  it.skip('should be able to return user data by ID', () => {
+  it('should be able to return user data by ID', () => {
     expect(userRepo.getUserData(1)).to.equal(userTestData[0]);
-    expect(userRepo.getUserData(4).to.equal(undefined));
   });
 
-  it.skip('should be able to return the average step goal of all users', () => {
-    expect(userRepo.getAllUsersAvgSteps().to.equal(10000));
+  it('should be able to return the average step goal of all users', () => {
+    expect(userRepo.getAllUsersAvgSteps()).to.equal(10000);
   });
 });
