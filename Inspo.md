@@ -1,27 +1,27 @@
-# FitLit Inspiration 
+# FitLit Inspiration
 
 ## Fitness app and Dashboard Inspiration
 
-![leap]()
+![Workout](src/images/FitLitInspo1.png)
 
-![health]()
+![health](src/images/FitlitInspo2.png)
 
-![fitbit]()
 
-![medical]()
-
-![invest]()
 
 ## Theme and Color Inspiration
 
-![let's get physical](./assets/eightiesfitness.jpg)
+![8 bit](src/images/8bitInspo.png)
 
-![80's babies](./assets/eightiesbabies.webp)
+![8 bit 2](src/images/8BitInspo2.jpeg)
 
-![anime](./assets/anime.jpg)
+![Dark Theme](src/images/colorThemeInspo.png)
+
+![Color Theme](src/images/FitLitInspo3.png)
+
+![Gameboy Retro](src/images/pngtree-retro-game-8-bit-t-shirt-design-png-image_2202154.jpeg)
 
 ## Mobile Inspiration
 
-![healthtracker](./assets/healthtracker.png)
+![]()
 
-![mobile](./assets/mobile.png)
+![]()
