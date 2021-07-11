@@ -13,13 +13,20 @@ describe('User Repository', () => {
     expect(UserRepository).to.be.a('function');
   });
 
-  it.skip('should be an instance of UserRepository', () => {
+  it('should be an instance of UserRepository', () => {
     expect(userRepo).to.be.an.instanceof(UserRepository);
   });
 
-  it.skip('should store all user data', () => {
+  it('should store all user data', () => {
     expect(userRepo.data).to.deep.equal(userTestData);
   });
 
-  
+  it.skip('should be able to return user data by ID', () => {
+    expect(userRepo.getUserData(1)).to.equal(userTestData[0]);
+    expect(userRepo.getUserData(4).to.equal(undefined));
+  });
+
+  it.skip('should be able to return the average step goal of all users', () => {
+    expect(userRepo.getAllUsersAvgSteps().to.equal(10000));
+  });
 });
