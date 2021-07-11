@@ -1,5 +1,94 @@
-body, html {
+* {
+  font-family: 'VT323', monospace;
+  color: white;
+  /* border: 1px dotted lime; */
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  height: 100vh;
+  width: 100vw;
+}
+
+h1 {
+  margin-top: 30px;
+  font-size: 50px;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100vw;
+  height: 80%;
+}
+
+.flip-card {
+  background-color: transparent;
+  height: 80%;
+  width: 20%;
+  margin-top: 40px;
+  perspective: 5000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  background-color: blue;
+  transform: rotateY(180deg);
+}
+
+.flip-card-front {
+  background-color: #3a3b3c;
+}
+
+section {
+  /* height: 80%;
+  width: 20%; */
+  /* margin-top: 40px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #3a3b3c;
+  border-radius: 5px;
+  opacity: 80%;
+}
+
+img {
+  height: 40px;
+  margin: 30px 0px 15px;
+}
+
+/* body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
   background-repeat: no-repeat;
   height: 100%;
-}
+} */
