@@ -9,6 +9,9 @@ export const fetchCalls = {
 
 
   fetchSleepData() {
-    
+    return fetch('http://localhost:3001/api/v1/sleep');
+    .then(response => response.json())
+    .then(data => data.sleep)
+    .catch(err => displayErr(err))
   }
 }
