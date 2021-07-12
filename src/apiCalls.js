@@ -19,6 +19,13 @@ export const fetchCalls = {
     .then(response => response.json())
     .then(data => data.activity)
     .catch(err => displayErr(err))
+  },
+
+  fetchHydrationData() {
+    return fetch('http://localhost:3001/api/v1/hydration');
+    .then(response => response.json())
+    .then(data => data.hydration)
+    .catch(err => displayErr(err))
   }
 
 }
