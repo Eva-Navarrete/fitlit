@@ -6,7 +6,10 @@ class User {
     this.email = user.email;
     this.strideLength = user.strideLength;
     this.dailyStepGoal = user.dailyStepGoal;
-    this.friends = user.friends
+    this.friends = user.friends;
+    this.sleepData = [];
+    this.hydrationData = [];
+    this.activityData = [];
   }
 
   returnName() {
