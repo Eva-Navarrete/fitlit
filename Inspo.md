@@ -22,6 +22,6 @@
 
 ## Mobile Inspiration
 
-![]()
+![Activity health](src/images/activity-apple-mobile.png)
 
-![]()
+![Health App](src/images/apple-health-data-iphone.jpeg)
