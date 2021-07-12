@@ -4,6 +4,7 @@ const userTestData = require('../src/data/userTestData')
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
+const hydrationData = require('../src/data/hydrationTestData');
 
 describe('User', () => {
   let user1, sleep, hydration, activity;
@@ -11,7 +12,7 @@ describe('User', () => {
   beforeEach(() => {
     user1 = new User(userTestData[0]);
     sleep = new Sleep();
-    hydration = new Hydration();
+    hydration = new Hydration(hydrationData[0]);
     activity = new Activity();
   });
 
