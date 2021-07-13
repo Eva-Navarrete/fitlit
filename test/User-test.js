@@ -75,20 +75,20 @@ describe('User', () => {
   });
 
   //getAvgOunces()
-  it.skip('Should calculate the average ounces consumed per day, for all time', () => {
+  it('Should calculate the average ounces consumed per day, for all time', () => {
     user1.hydrationData.push(hydration1);
     user1.hydrationData.push(hydration2);
     user1.hydrationData.push(hydration3);
 
-    user1.getAvgOunces();
+    const averageOunces = user1.getAvgOunces();
 
-    expect(user1.getAvgOunces()).to.equal(71.7);
-  })
+    expect(averageOunces).to.equal(71.7);
+  });
 
   it('Should store a user\'s activity data', () => {
     user1.activityData.push(activity);
 
     expect(user1.activityData).to.deep.equal([activity]);
     expect(user1.activityData.length).to.equal(1);
-  })
-})
+  });
+});
