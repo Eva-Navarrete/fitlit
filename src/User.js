@@ -16,6 +16,15 @@ class User {
     const firstName = this.name.split(' ')[0];
     return firstName;
   }
+
+
+
+  getAvgOunces() {
+
+    return this.hydrationData.reduce((acc, hydration) => {
+      return acc + hydration.numOunces;
+    }, 0) / this.hydrationData.length;
+  }
 }
 
 export default User;
