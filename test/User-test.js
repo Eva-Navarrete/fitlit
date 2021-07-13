@@ -1,18 +1,20 @@
 import { expect } from 'chai';
 import User from '../src/User';
-const userTestData = require('../src/data/userTestData')
 import Sleep from '../src/Sleep';
 import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
+const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
 
 describe('User', () => {
-  let user1, sleep, hydration, activity;
+  let user1, sleep, hydration1, hydration2, hydration3, activity;
 
   beforeEach(() => {
     user1 = new User(userTestData[0]);
     sleep = new Sleep();
-    hydration = new Hydration(hydrationData[0]);
+    hydration1 = new Hydration(hydrationData[0]);
+    hydration2 = new Hydration(hydrationData[1]);
+    hydration3 = new Hydration(hydrationData[2]);
     activity = new Activity();
   });
 
@@ -64,10 +66,12 @@ describe('User', () => {
   });
 
   it('Should store a user\'s hydration data', () => {
-    user1.hydrationData.push(hydration);
+    user1.hydrationData.push(hydration1);
+    user1.hydrationData.push(hydration2);
+    user1.hydrationData.push(hydration3);
 
-    expect(user1.hydrationData).to.deep.equal([hydration]);
-    expect(user1.hydrationData.length).to.equal(1);
+    expect(user1.hydrationData).to.deep.equal([hydration1, hydration2, hydration3]);
+    expect(user1.hydrationData.length).to.equal(3);
   });
 
   it('Should store a user\'s activity data', () => {
