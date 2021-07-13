@@ -74,6 +74,17 @@ describe('User', () => {
     expect(user1.hydrationData.length).to.equal(3);
   });
 
+  //getAvgOunces()
+  it.skip('Should calculate the average ounces consumed per day, for all time', () => {
+    user1.hydrationData.push(hydration1);
+    user1.hydrationData.push(hydration2);
+    user1.hydrationData.push(hydration3);
+
+    user1.getAvgOunces();
+
+    expect(user1.getAvgOunces()).to.equal(71.7);
+  })
+
   it('Should store a user\'s activity data', () => {
     user1.activityData.push(activity);
 
