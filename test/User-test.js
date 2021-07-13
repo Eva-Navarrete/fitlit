@@ -82,11 +82,12 @@ describe('User', () => {
 
     const dailyOunces1 = user1.getDailyOunces("2019/06/14");
     const dailyOunces2 = user1.getDailyOunces("2019/06/15");
-    // const dailyOunces3 = user1.getDailyOunces("2019/06/17");
+    // Potential sad path testing:
+    const dailyOunces3 = user1.getDailyOunces("2019/06/17");
 
     expect(dailyOunces1).to.equal(70);
     expect(dailyOunces2).to.equal(95);
-    // expect(dailyOunces3).to.equal(undefined);
+    expect(dailyOunces3).to.equal(null);
   });
 
   it('Should calculate the average ounces consumed per day, for all time', () => {
