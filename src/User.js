@@ -17,6 +17,11 @@ class User {
     return firstName;
   }
 
+  getDailyOunces(date) {
+    const dailyOunces = this.hydrationData.find(hydration => hydration.date === date)
+    return dailyOunces.numOunces;
+  }
+
   getAvgOunces() {
     const avgOunces = this.hydrationData.reduce((acc, hydration) => {
       return acc + hydration.numOunces;
