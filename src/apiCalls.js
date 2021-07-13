@@ -1,30 +1,37 @@
   const fetchUserData = () => {
     return fetch('http://localhost:3001/api/v1/users')
     .then(response => response.json())
-    .then(data => console.log(data))
-    // .catch(err => displayErr(err))
+    // .then(data => data)
+    .catch(err => console.error('not Working'))
+
   };
+console.log('user',fetchUserData());
 
   const fetchSleepData = () => {
-    return fetch('http://localhost:3001/api/v1/sleep');
+    return fetch('http://localhost:3001/api/v1/sleep')
     .then(response => response.json())
-    // .catch(err => displayErr(err))
+    .then(data => data)
+    .catch(err => console.error('not Working'))
   };
-
+console.log('sleep',fetchSleepData());
   const fetchActivityData = () => {
-    return fetch('http://localhost:3001/api/v1/activity');
+    return fetch('http://localhost:3001/api/v1/activity')
     .then(response => response.json())
     // .catch(err => displayErr(err))
   };
-
+console.log('activity',fetchActivityData());
   const fetchHydrationData = () => {
-    return fetch('http://localhost:3001/api/v1/hydration');
+    return fetch('http://localhost:3001/api/v1/hydration')
     .then(response => response.json())
     // .catch(err => displayErr(err))
   }
+console.log('hydro',fetchHydrationData());
 
 const fetchAllData = () => {
   return Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
+
 }
 
-export default fetchAllData;
+console.log('all dta ', fetchAllData());
+
+export default { fetchAllData };

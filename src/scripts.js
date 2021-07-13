@@ -3,7 +3,8 @@
 
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
-import { fetchAllData } from './apiCalls';
+import apiCalls  from './apiCalls';
+console.log(apiCalls);
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
@@ -19,13 +20,14 @@ import userData from './data/users';
 import UserRepository from './UserRepository';
 
 
+window.onload = generateApiCalls();
 
 function generateApiCalls() {
+  console.log('WTf is going on!!')
   fetchAllData()
 
   // .then(data => {
   //   console.log(data)
   // })
 
-}
-window.onload = generateApiCalls();
+};
