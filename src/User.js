@@ -18,8 +18,12 @@ class User {
   }
 
   getDailyOunces(date) {
-    const dailyOunces = this.hydrationData.find(hydration => hydration.date === date)
-    return dailyOunces.numOunces;
+    if (this.hydrationData.map(water => water.date).includes(date)) {
+      const dailyOunces = this.hydrationData.find(hydration => hydration.date === date)
+      return dailyOunces.numOunces;
+    } else {
+      return null;
+    }
   }
 
   getAvgOunces() {
