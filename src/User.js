@@ -17,13 +17,11 @@ class User {
     return firstName;
   }
 
-
-
   getAvgOunces() {
-
-    return this.hydrationData.reduce((acc, hydration) => {
+    const avgOunces = this.hydrationData.reduce((acc, hydration) => {
       return acc + hydration.numOunces;
     }, 0) / this.hydrationData.length;
+    return Math.round(avgOunces * 10) / 10;
   }
 }
 
