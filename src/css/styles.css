@@ -28,7 +28,7 @@ h1 {
 
 .card-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr ;
   grid-template-rows: 1fr 1fr;
   align-content: space-between;
   place-items: center;
@@ -55,8 +55,10 @@ h1 {
   perspective: 5000px;
 }
 
-.flip-card:nth-child(1), .flip-card:nth-child(6) {
-  width: 400px;
+.flip-card:nth-child(1),  {
+  /* width: 400px;
+   */
+   grid-column: 1/3;
 
 }
 
