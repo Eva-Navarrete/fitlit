@@ -26,21 +26,40 @@ h1 {
   font-size: 50px;
 }
 
-main {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 100vw;
-  height: 80%;
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+  grid-template-rows: 1fr 1fr;
+  align-content: space-between;
+  place-items: center;
+  grid-gap: 1rem;
+  /* flex-direction: row; */
+  /* justify-content: space-around; */
+  /* margin-top: 5%; */
+  width: 90%;
+  height: 90%;
+}
+
+.card-grid * {
+  display: grid;
+  place-items: center;
+  min-width: 0
 }
 
 .flip-card {
   background-color: transparent;
-  height: 80%;
-  width: 20%;
-  margin-top: 40px;
+  height: 200px;
+  width: 200px;
+  margin: auto;
+  /* margin-top: 40px; */
   perspective: 5000px;
 }
+
+.flip-card:nth-child(1), .flip-card:nth-child(6) {
+  width: 400px;
+
+}
+
 
 .flip-card-inner {
   position: relative;
