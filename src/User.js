@@ -18,7 +18,8 @@ class User {
   }
 
   getDailyOunces(date) {
-    if (this.hydrationData.map(water => water.date).includes(date)) {
+    if (this.hydrationData.map(water => water.date)
+    .includes(date)) {
       const dailyOunces = this.hydrationData.find(hydration => hydration.date === date)
       return dailyOunces.numOunces;
     } else {
@@ -31,6 +32,11 @@ class User {
       return acc + hydration.numOunces;
     }, 0) / this.hydrationData.length;
     return Math.round(avgOunces * 10) / 10;
+  }
+
+  getWeeklyOunces() {
+    return this.hydrationData.slice(-7)
+    .map(water => water.numOunces);
   }
 }
 
