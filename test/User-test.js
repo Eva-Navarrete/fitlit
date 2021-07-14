@@ -7,7 +7,8 @@ const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
 
 describe('User', () => {
-  let user1, sleep, hydration1, hydration2, hydration3, activity;
+  let user1, sleep, activity;
+  let hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8;
 
   beforeEach(() => {
     user1 = new User(userTestData[0]);
@@ -15,6 +16,12 @@ describe('User', () => {
     hydration1 = new Hydration(hydrationData[0]);
     hydration2 = new Hydration(hydrationData[1]);
     hydration3 = new Hydration(hydrationData[2]);
+    hydration4 = new Hydration(hydrationData[3]);
+    hydration5 = new Hydration(hydrationData[4]);
+    hydration6 = new Hydration(hydrationData[5]);
+    hydration7 = new Hydration(hydrationData[6]);
+    hydration8 = new Hydration(hydrationData[7]);
+
     activity = new Activity();
   });
 
@@ -100,6 +107,20 @@ describe('User', () => {
     expect(averageOunces).to.equal(71.7);
   });
 
+  it('Should be able to calculate the average ounces consumed daily for the last week', () => {
+    user1.hydrationData.push(hydration1);
+    user1.hydrationData.push(hydration2);
+    user1.hydrationData.push(hydration3);
+    user1.hydrationData.push(hydration4);
+    user1.hydrationData.push(hydration5);
+    user1.hydrationData.push(hydration6);
+    user1.hydrationData.push(hydration7);
+    user1.hydrationData.push(hydration8);
+
+    const weeklyOunces = user1.getWeeklyOunces();
+
+    expect(weeklyOunces).to.deep.equal([95, 50, 20, 80, 60, 90, 100]);
+  })
 
   it('Should store a user\'s activity data', () => {
     user1.activityData.push(activity);
