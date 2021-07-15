@@ -1,16 +1,17 @@
 class UserRepository {
-  constructor(user) {
-    this.data = user;
+  constructor(users) {
+    this.users = users;
+    this.allSleepData = [];
   }
 
   getUserData(id) {
-    return this.data.find(user => user.id === id);
+    return this.users.find(user => user.id === id);
   }
 
   getAllUsersAvgSteps() {
-    return this.data.reduce((acc, user) => {
+    return this.users.reduce((acc, user) => {
       return acc + user.dailyStepGoal;
-    }, 0) / this.data.length;
+    }, 0) / this.users.length;
   }
 }
 
