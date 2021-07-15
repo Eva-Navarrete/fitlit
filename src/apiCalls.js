@@ -29,4 +29,4 @@
     return Promise.all([fetchUserData(), fetchSleepData(), fetchActivityData(), fetchHydrationData()])
   }
 
-  export default { fetchAllData };
+  export  { fetchAllData };

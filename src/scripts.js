@@ -3,7 +3,9 @@
 
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
-import apiCalls  from './apiCalls';
+import { fetchAllData }  from './apiCalls';
+
+// console.log(apiCalls);
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -16,15 +18,25 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
-import userData from './data/users';
+// import userData from './data/users';
 import UserRepository from './UserRepository';
-
+let userData;
 
 window.onload = generateApiCalls();
 
 function generateApiCalls() {
   console.log('WTf is going on!!')
-  fetchAllData()
+
+  const fetch = fetchAllData()
+  // .then(response => response.json())
+  .then(data => {
+     userData = data[0];
+     console.log(userData);
+     return;
+   });
+
+
+   // console.log(fetch);
 
   // .then(data => {
   //   console.log(data)
