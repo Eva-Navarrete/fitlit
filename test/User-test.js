@@ -39,6 +39,14 @@ describe('User', () => {
     user1.hydrationData.push(hydration7);
     user1.hydrationData.push(hydration8);
 
+    user1.sleepData.push(sleep1);
+    user1.sleepData.push(sleep2);
+    user1.sleepData.push(sleep3);
+    user1.sleepData.push(sleep4);
+    user1.sleepData.push(sleep5);
+    user1.sleepData.push(sleep6);
+    user1.sleepData.push(sleep7);
+
     activity = new Activity();
   });
 
@@ -83,55 +91,30 @@ describe('User', () => {
   });
 
   it('Should store a user\'s sleep data', () => {
-    user1.sleepData.push(sleep1);
-    user1.sleepData.push(sleep2);
-    user1.sleepData.push(sleep3);
-    user1.sleepData.push(sleep4);
-    user1.sleepData.push(sleep5);
-    user1.sleepData.push(sleep6);
-    user1.sleepData.push(sleep7);
+
 
     expect(user1.sleepData).to.deep.equal([sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7]);
     expect(user1.sleepData.length).to.equal(7);
   });
 
   it.skip('Should calculate the average number of hours slept per day', () => {
-    user1.sleepData.push(sleep1);
-    user1.sleepData.push(sleep2);
-    user1.sleepData.push(sleep3);
-    user1.sleepData.push(sleep4);
-    user1.sleepData.push(sleep5);
-    user1.sleepData.push(sleep6);
-    user1.sleepData.push(sleep7);
-
     const averageHours = user1.getAvgHoursSlept();
 
     expect(averageHours).to.equal(7.14);
   });
 
   it.skip('Should calculate the average sleep quality for a user', () => {
-    user1.sleepData.push(sleep1);
-    user1.sleepData.push(sleep2);
-    user1.sleepData.push(sleep3);
-    user1.sleepData.push(sleep4);
-    user1.sleepData.push(sleep5);
-    user1.sleepData.push(sleep6);
-    user1.sleepData.push(sleep7);
-
     const averageQuality = user1.getAvgSleepQuality();
 
     expect(averageQuality).to.equal(3.3);
   });
 
   it.skip('Should return the number of hours slept on a given day', () => {
-    user1.sleepData.push(sleep1);
-    user1.sleepData.push(sleep2);
-    user1.sleepData.push(sleep3);
-    user1.sleepData.push(sleep4);
-    user1.sleepData.push(sleep5);
-    user1.sleepData.push(sleep6);
-    user1.sleepData.push(sleep7);
+    const dailySleep1 = user1.getDailySleep("2019/06/15");
+    const dailySleep2 = user1.getDailySleep("2019/06/16");
+    const dailySleep3 = user1.getDailySleep("2021/06/35");
 
+    
   });
 
   it('Should store a user\'s hydration data', () => {
