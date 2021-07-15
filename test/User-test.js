@@ -5,6 +5,7 @@ import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
+const sleepData = require('../src/data/sleepTestData');
 
 describe('User', () => {
   let user1, sleep, activity;
@@ -12,7 +13,7 @@ describe('User', () => {
 
   beforeEach(() => {
     user1 = new User(userTestData[0]);
-    sleep = new Sleep();
+    sleep = new Sleep(sleepData[0]);
     hydration1 = new Hydration(hydrationData[0]);
     hydration2 = new Hydration(hydrationData[1]);
     hydration3 = new Hydration(hydrationData[2]);
@@ -120,7 +121,7 @@ describe('User', () => {
     const weeklyOunces = user1.getWeeklyOunces();
 
     expect(weeklyOunces).to.deep.equal([95, 50, 20, 80, 60, 90, 100]);
-  })
+  });
 
   it('Should store a user\'s activity data', () => {
     user1.activityData.push(activity);
