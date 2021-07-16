@@ -97,39 +97,39 @@ describe('User', () => {
     expect(user1.sleepData.length).to.equal(7);
   });
 
-  it.skip('Should calculate the average number of hours slept per day', () => {
+  it('Should calculate the average number of hours slept per day', () => {
     const averageHours = user1.getAvgHoursSlept();
 
     expect(averageHours).to.equal(7.14);
   });
 
-  it.skip('Should calculate the average sleep quality for a user', () => {
+  it('Should calculate the average sleep quality for a user', () => {
     const averageQuality = user1.getAvgSleepQuality();
 
     expect(averageQuality).to.equal(3.3);
   });
 
-  it.skip('Should return the number of hours slept on a given day', () => {
-    const dailySleep1 = user1.getDailySleep("2019/06/15");
-    const dailySleep2 = user1.getDailySleep("2019/06/16");
-    const dailySleep3 = user1.getDailySleep("2021/06/35");
+  it('Should return the number of hours slept on a given day', () => {
+    const dailySleep1 = user1.getDailySleepHours("2019/06/15");
+    const dailySleep2 = user1.getDailySleepHours("2019/06/16");
+    const dailySleep3 = user1.getDailySleepHours("2021/06/35");
 
     expect(dailySleep1).to.equal(5);
     expect(dailySleep2).to.equal(5);
     expect(dailySleep3).to.equal(null);
   });
 
-  it.skip('Should return a user\'s sleep quality for a given day', () => {
-    const dailyQuality1 = user1.getDailyQuality("2019/06/15");
-    const dailyQuality2 = user1.getDailyQuality("2019/06/16");
-    const dailyQuality3 = user1.getDailyQuality("2021/06/35");
+  it('Should return a user\'s sleep quality for a given day', () => {
+    const dailyQuality1 = user1.getDailySleepQuality("2019/06/15");
+    const dailyQuality2 = user1.getDailySleepQuality("2019/06/16");
+    const dailyQuality3 = user1.getDailySleepQuality("2021/06/35");
 
     expect(dailyQuality1).to.equal(2);
     expect(dailyQuality2).to.equal(2);
     expect(dailyQuality3).to.equal(null);
   });
 
-  it.skip('Should be able to return the number of hours slept each day over a given week', () => {
+  it('Should be able to return the number of hours slept each day over a given week', () => {
     const weeklyHours1 = user1.getWeeklySleepLog("2019/06/15", "2019/06/21");
 
     // Sad path testing
