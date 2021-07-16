@@ -114,8 +114,37 @@ describe('User', () => {
     const dailySleep2 = user1.getDailySleep("2019/06/16");
     const dailySleep3 = user1.getDailySleep("2021/06/35");
 
-    
+    expect(dailySleep1).to.equal(5);
+    expect(dailySleep2).to.equal(5);
+    expect(dailySleep3).to.equal(null);
   });
+
+  it.skip('Should return a user\'s sleep quality for a given day', () => {
+    const dailyQuality1 = user1.getDailyQuality("2019/06/15");
+    const dailyQuality2 = user1.getDailyQuality("2019/06/16");
+    const dailyQuality3 = user1.getDailyQuality("2021/06/35");
+
+    expect(dailyQuality1).to.equal(2);
+    expect(dailyQuality2).to.equal(2);
+    expect(dailyQuality3).to.equal(null);
+  });
+
+  it.skip('Should be able to return the number of hours slept each day over a given week', () => {
+    const weeklyHours1 = user1.getWeeklySleepLog("2019/06/15", "2019/06/21");
+
+    // Sad path testing
+    // const weeklyHours2 = user1.getWeeklySleepLog("2020/03/02", "2021/05/06");
+
+    expect(weeklyHours1).to.deep.equal([5, 5, 10, 7, 5, 10, 8]);
+  });
+
+  it.skip('Should return the sleep quality for each day of a given week', () => {
+    const weeklyQuality1 = user1.getWeeklySleepQualityLog("2019/06/15", "2019/06/21");
+
+    expect(weeklyQuality1).to.deep.equal([2, 2, 4, 4, 2, 4, 5]);
+  });
+
+
 
   it('Should store a user\'s hydration data', () => {
     expect(user1.hydrationData).to.deep.equal([hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8]);
@@ -139,7 +168,7 @@ describe('User', () => {
     expect(averageOunces).to.equal(70.6);
   });
 
-  it('Should be able to calculate the average ounces consumed daily for the last week', () => {
+  it('Should be able to return the number of ounces consumed daily for the last week', () => {
     const weeklyOunces = user1.getWeeklyOunces();
 
     expect(weeklyOunces).to.deep.equal([95, 50, 20, 80, 60, 90, 100]);
