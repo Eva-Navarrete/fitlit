@@ -51,8 +51,24 @@ class User {
     }
   }
 
-  getWeeklySleepLog(startDate, endDate) {
-    
+  getWeeklySleepLog(date) {
+    const index = this.sleepData.findIndex(sleep => sleep.date === date);
+    if (index >= 6) {
+      return this.sleepData.slice(index - 6, index + 1)
+      .map(sleep => sleep.hoursSlept);
+    } else {
+      return null;
+    }
+  }
+
+  getWeeklySleepQualityLog(date) {
+    const index = this.sleepData.findIndex(sleep => sleep.date === date);
+    if (index >= 6) {
+      return this.sleepData.slice(index -6, index + 1)
+      .map(sleep => sleep.sleepQuality);
+    } else {
+      return null;
+    }
   }
 
   getDailyOunces(date) {
