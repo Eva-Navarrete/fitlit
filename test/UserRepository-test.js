@@ -25,9 +25,6 @@ describe('User Repository', () => {
 
   it('should be an instance of UserRepository', () => {
     expect(userRepo).to.be.an.instanceof(UserRepository);
-
-      console.log(userRepo.allSleepData);
-      console.log(userRepo.allSleepData.length);
   });
 
   it('should store all user data', () => {
@@ -47,9 +44,9 @@ describe('User Repository', () => {
     expect(userRepo.allSleepData.length).to.equal(21);
   });
 
-  it.skip('should be able to return the average sleep quality for all users', () => {
+  it('should be able to return the average sleep quality for all users', () => {
     const avgSleepQuality = userRepo.getAllAvgSleepQuality();
 
     expect(avgSleepQuality).to.equal(2.8);
-  })
+  });
 });
