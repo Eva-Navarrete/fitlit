@@ -5,14 +5,22 @@ import Hydration from '../src/Hydration';
 import Activity from '../src/Activity';
 const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
+const sleepData = require('../src/data/sleepTestData');
 
 describe('User', () => {
-  let user1, sleep, activity;
+  let user1, activity;
+  let sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7;
   let hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8;
 
   beforeEach(() => {
     user1 = new User(userTestData[0]);
-    sleep = new Sleep();
+    sleep1 = new Sleep(sleepData[0]);
+    sleep2 = new Sleep(sleepData[1]);
+    sleep3 = new Sleep(sleepData[2]);
+    sleep4 = new Sleep(sleepData[3]);
+    sleep5 = new Sleep(sleepData[4]);
+    sleep6 = new Sleep(sleepData[5]);
+    sleep7 = new Sleep(sleepData[6]);
     hydration1 = new Hydration(hydrationData[0]);
     hydration2 = new Hydration(hydrationData[1]);
     hydration3 = new Hydration(hydrationData[2]);
@@ -21,6 +29,23 @@ describe('User', () => {
     hydration6 = new Hydration(hydrationData[5]);
     hydration7 = new Hydration(hydrationData[6]);
     hydration8 = new Hydration(hydrationData[7]);
+
+    user1.hydrationData.push(hydration1);
+    user1.hydrationData.push(hydration2);
+    user1.hydrationData.push(hydration3);
+    user1.hydrationData.push(hydration4);
+    user1.hydrationData.push(hydration5);
+    user1.hydrationData.push(hydration6);
+    user1.hydrationData.push(hydration7);
+    user1.hydrationData.push(hydration8);
+
+    user1.sleepData.push(sleep1);
+    user1.sleepData.push(sleep2);
+    user1.sleepData.push(sleep3);
+    user1.sleepData.push(sleep4);
+    user1.sleepData.push(sleep5);
+    user1.sleepData.push(sleep6);
+    user1.sleepData.push(sleep7);
 
     activity = new Activity();
   });
@@ -66,31 +91,67 @@ describe('User', () => {
   });
 
   it('Should store a user\'s sleep data', () => {
-    user1.sleepData.push(sleep);
+    expect(user1.sleepData).to.deep.equal([sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7]);
+    expect(user1.sleepData.length).to.equal(7);
+  });
 
-    expect(user1.sleepData).to.deep.equal([sleep]);
-    expect(user1.sleepData.length).to.equal(1);
+  it('Should calculate the average number of hours slept per day', () => {
+    const averageHours = user1.getAvgHoursSlept();
+
+    expect(averageHours).to.equal(7.14);
+  });
+
+  it('Should calculate the average sleep quality for a user', () => {
+    const averageQuality = user1.getAvgSleepQuality();
+
+    expect(averageQuality).to.equal(3.3);
+  });
+
+  it('Should return the number of hours slept on a given day', () => {
+    const dailySleep1 = user1.getDailySleepHours("2019/06/15");
+    const dailySleep2 = user1.getDailySleepHours("2019/06/16");
+    const dailySleep3 = user1.getDailySleepHours("2021/06/35");
+
+    expect(dailySleep1).to.equal(5);
+    expect(dailySleep2).to.equal(5);
+    expect(dailySleep3).to.equal(null);
+  });
+
+  it('Should return a user\'s sleep quality for a given day', () => {
+    const dailyQuality1 = user1.getDailySleepQuality("2019/06/15");
+    const dailyQuality2 = user1.getDailySleepQuality("2019/06/16");
+    const dailyQuality3 = user1.getDailySleepQuality("2021/06/35");
+
+    expect(dailyQuality1).to.equal(2);
+    expect(dailyQuality2).to.equal(2);
+    expect(dailyQuality3).to.equal(null);
+  });
+
+  it('Should be able to return the number of hours slept each day over a given week', () => {
+    const weeklyHours1 = user1.getWeeklySleepLog("2019/06/21");
+    const weeklyHours2 = user1.getWeeklySleepLog("2019/06/35");
+
+    expect(weeklyHours1).to.deep.equal([5, 5, 10, 7, 5, 10, 8]);
+    expect(weeklyHours2).to.equal(null);
+  });
+
+  it('Should return the sleep quality for each day of a given week', () => {
+    const weeklyQuality1 = user1.getWeeklySleepQualityLog("2019/06/21");
+    const weeklyQuality2 = user1.getWeeklySleepQualityLog("2019/06/35");
+
+    expect(weeklyQuality1).to.deep.equal([2, 2, 4, 4, 2, 4, 5]);
+    expect(weeklyQuality2).to.equal(null);
   });
 
   it('Should store a user\'s hydration data', () => {
-    user1.hydrationData.push(hydration1);
-    user1.hydrationData.push(hydration2);
-    user1.hydrationData.push(hydration3);
-
-    expect(user1.hydrationData).to.deep.equal([hydration1, hydration2, hydration3]);
-    expect(user1.hydrationData.length).to.equal(3);
+    expect(user1.hydrationData).to.deep.equal([hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8]);
+    expect(user1.hydrationData.length).to.equal(8);
   });
 
-  //getAvgOunces()
   it('Should return the number of ounces consumed on a certain date', () => {
-    user1.hydrationData.push(hydration1);
-    user1.hydrationData.push(hydration2);
-    user1.hydrationData.push(hydration3);
-
     const dailyOunces1 = user1.getDailyOunces("2019/06/14");
     const dailyOunces2 = user1.getDailyOunces("2019/06/15");
-    // Potential sad path testing:
-    const dailyOunces3 = user1.getDailyOunces("2019/06/17");
+    const dailyOunces3 = user1.getDailyOunces("2019/06/35");
 
     expect(dailyOunces1).to.equal(70);
     expect(dailyOunces2).to.equal(95);
@@ -98,29 +159,16 @@ describe('User', () => {
   });
 
   it('Should calculate the average ounces consumed per day, for all time', () => {
-    user1.hydrationData.push(hydration1);
-    user1.hydrationData.push(hydration2);
-    user1.hydrationData.push(hydration3);
-
     const averageOunces = user1.getAvgOunces();
 
-    expect(averageOunces).to.equal(71.7);
+    expect(averageOunces).to.equal(70.6);
   });
 
-  it('Should be able to calculate the average ounces consumed daily for the last week', () => {
-    user1.hydrationData.push(hydration1);
-    user1.hydrationData.push(hydration2);
-    user1.hydrationData.push(hydration3);
-    user1.hydrationData.push(hydration4);
-    user1.hydrationData.push(hydration5);
-    user1.hydrationData.push(hydration6);
-    user1.hydrationData.push(hydration7);
-    user1.hydrationData.push(hydration8);
-
+  it('Should be able to return the number of ounces consumed daily for the last week', () => {
     const weeklyOunces = user1.getWeeklyOunces();
 
     expect(weeklyOunces).to.deep.equal([95, 50, 20, 80, 60, 90, 100]);
-  })
+  });
 
   it('Should store a user\'s activity data', () => {
     user1.activityData.push(activity);

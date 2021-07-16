@@ -17,6 +17,60 @@ class User {
     return firstName;
   }
 
+  getAvgHoursSlept() {
+    const avgHours = this.sleepData.reduce((acc, sleep) => {
+      return acc += sleep.hoursSlept;
+    }, 0) / this.sleepData.length;
+    return Math.round(avgHours * 100) / 100;
+  }
+
+  getAvgSleepQuality() {
+    const avgQuality = this.sleepData.reduce((acc, sleep) => {
+      return acc += sleep.sleepQuality;
+    }, 0) / this.sleepData.length;
+    return Math.round(avgQuality * 10) / 10;
+  }
+
+  getDailySleepHours(date) {
+    if (this.sleepData.map(sleep => sleep.date)
+    .includes(date)) {
+      const timeLog = this.sleepData.find(sleep => sleep.date === date);
+      return timeLog.hoursSlept;
+    } else {
+      return null;
+    }
+  }
+
+  getDailySleepQuality(date) {
+    if (this.sleepData.map(sleep => sleep.date)
+    .includes(date)) {
+      const qualityLog = this.sleepData.find(sleep => sleep.date === date);
+      return qualityLog.sleepQuality;
+    } else {
+      return null;
+    }
+  }
+
+  getWeeklySleepLog(date) {
+    const index = this.sleepData.findIndex(sleep => sleep.date === date);
+    if (index >= 6) {
+      return this.sleepData.slice(index - 6, index + 1)
+      .map(sleep => sleep.hoursSlept);
+    } else {
+      return null;
+    }
+  }
+
+  getWeeklySleepQualityLog(date) {
+    const index = this.sleepData.findIndex(sleep => sleep.date === date);
+    if (index >= 6) {
+      return this.sleepData.slice(index -6, index + 1)
+      .map(sleep => sleep.sleepQuality);
+    } else {
+      return null;
+    }
+  }
+
   getDailyOunces(date) {
     if (this.hydrationData.map(water => water.date)
     .includes(date)) {
