@@ -6,9 +6,11 @@ import Activity from '../src/Activity';
 const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
 const sleepData = require('../src/data/sleepTestData');
+const activityData = require('../src/data/activityTestData');
 
 describe('User', () => {
-  let user1, activity;
+  let user1;
+  let activity1, activity2, activity3, activity4, activity5, activity6, activity7, activity8;
   let sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7;
   let hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8;
 
@@ -21,6 +23,7 @@ describe('User', () => {
     sleep5 = new Sleep(sleepData[4]);
     sleep6 = new Sleep(sleepData[5]);
     sleep7 = new Sleep(sleepData[6]);
+
     hydration1 = new Hydration(hydrationData[0]);
     hydration2 = new Hydration(hydrationData[1]);
     hydration3 = new Hydration(hydrationData[2]);
@@ -29,6 +32,15 @@ describe('User', () => {
     hydration6 = new Hydration(hydrationData[5]);
     hydration7 = new Hydration(hydrationData[6]);
     hydration8 = new Hydration(hydrationData[7]);
+
+    activity1 = new Activity(activityData[0]);
+    activity2 = new Activity(activityData[1]);
+    activity3 = new Activity(activityData[2])
+    activity4 = new Activity(activityData[3])
+    activity5 = new Activity(activityData[4])
+    activity6 = new Activity(activityData[5])
+    activity7 = new Activity(activityData[6])
+    activity8 = new Activity(activityData[7])
 
     user1.hydrationData.push(hydration1);
     user1.hydrationData.push(hydration2);
@@ -47,7 +59,14 @@ describe('User', () => {
     user1.sleepData.push(sleep6);
     user1.sleepData.push(sleep7);
 
-    activity = new Activity();
+    user1.activityData.push(activity1);
+    user1.activityData.push(activity2);
+    user1.activityData.push(activity3);
+    user1.activityData.push(activity4);
+    user1.activityData.push(activity5);
+    user1.activityData.push(activity6);
+    user1.activityData.push(activity7);
+    user1.activityData.push(activity8);
   });
 
   it('Should be a function', () => {
@@ -171,9 +190,55 @@ describe('User', () => {
   });
 
   it('Should store a user\'s activity data', () => {
-    user1.activityData.push(activity);
+    expect(user1.activityData).to.deep.equal([activity1, activity2, activity3, activity4, activity5, activity6, activity7, activity8]);
+    expect(user1.activityData.length).to.equal(8);
+  });
 
-    expect(user1.activityData).to.deep.equal([activity]);
-    expect(user1.activityData.length).to.equal(1);
+  it('Should return the miles walked by a user, given date and stride length', () => {
+    const miles1 = user1.getDailyMiles("2019/06/15");
+    const miles2 = user1.getDailyMiles("2019/06/16");
+    const miles3 = user1.getDailyMiles("2019/06/35");
+
+    expect(miles1).to.equal(3);
+    expect(miles2).to.equal(3.7);
+    expect(miles3).to.equal(null);
+  });
+
+  it('Should return how many minutes a user was active on a certain date', () => {
+    const minutesActive1 = user1.getMinutesActive("2019/06/15");
+    const minutesActive2 = user1.getMinutesActive("2019/06/16");
+    const minutesActive3 = user1.getMinutesActive("2019/06/35");
+
+    expect(minutesActive1).to.equal(140);
+    expect(minutesActive2).to.equal(138);
+    expect(minutesActive3).to.equal(null);
+  });
+
+  it('Should return how many minutes a user was active on average per week', () => {
+    const minutesAvgActive1 = user1.getAvgMinutesActive("2019/06/22");
+    const minutesAvgActive2 = user1.getAvgMinutesActive("2019/06/35");
+
+    expect(minutesAvgActive1).to.equal(124);
+    expect(minutesAvgActive2).to.equal(null);
+  });
+
+  it('Should check if a user reached their step on a certain date', () => {
+    const stepGoal1 = user1.evaluateStepGoal("2019/06/15");
+    const stepGoal2 = user1.evaluateStepGoal("2019/06/20");
+
+    expect(stepGoal1).to.equal(false);
+    expect(stepGoal2).to.equal(true);
+  });
+
+  it('Should return all days that a user exceeded their step goal', () => {
+    const exceedGoal1 = user1.returnStepGoalMet();
+
+    expect(exceedGoal1).to.deep.equal(["2019/06/20", "2019/06/21"]);
+  });
+
+  it('Should return a user\'s all-time stair climbing record', () => {
+    const stairRecord = user1.getStairRecord();
+
+    expect(stairRecord).to.equal(35);
   });
 });

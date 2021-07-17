@@ -92,6 +92,60 @@ class User {
     return this.hydrationData.slice(-7)
     .map(water => water.numOunces);
   }
+
+  getDailyMiles(date) {
+    if (this.activityData.map(activity => activity.date)
+    .includes(date)) {
+      const step = this.activityData.find(activity => activity.date === date)
+      return Math.round((step.numSteps * this.strideLength) / 528) / 10;
+    } else {
+      return null;
+    }
+  }
+
+  getMinutesActive(date) {
+    if (this.activityData.map(activity => activity.date)
+    .includes(date)) {
+      const minutes = this.activityData.find(activity => activity.date === date)
+      return minutes.minutesActive;
+    } else {
+      return null;
+    }
+  }
+
+  getAvgMinutesActive(date) {
+    if (this.activityData.map(activity => activity.date)
+    .includes(date)) {
+      const index = this.activityData.findIndex(activity => activity.date === date)
+      return Math.round(this.activityData.slice(index - 6, index + 1)
+      .reduce((acc, activity) => {
+        return acc += activity.minutesActive;
+      }, 0) / 7);
+    } else {
+      return null;
+    }
+  }
+
+  evaluateStepGoal(date) {
+    const step = this.activityData.find(activity => activity.date === date)
+    if (step.numSteps >= this.dailyStepGoal) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  returnStepGoalMet() {
+    return this.activityData.filter(activity => activity.numSteps >= this.dailyStepGoal)
+    .map(activity => activity.date)
+  }
+
+  getStairRecord() {
+    return this.activityData.sort((a,b) => b.flightsOfStairs - a.flightsOfStairs)[0].flightsOfStairs;
+  }
 }
+
+
+
 
 export default User;
