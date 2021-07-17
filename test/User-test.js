@@ -6,9 +6,10 @@ import Activity from '../src/Activity';
 const userTestData = require('../src/data/userTestData');
 const hydrationData = require('../src/data/hydrationTestData');
 const sleepData = require('../src/data/sleepTestData');
+const activityData = require('../src/data/activityTestData');
 
 describe('User', () => {
-  let user1, activity;
+  let user1, activity1;
   let sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7;
   let hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8;
 
@@ -47,7 +48,7 @@ describe('User', () => {
     user1.sleepData.push(sleep6);
     user1.sleepData.push(sleep7);
 
-    activity = new Activity();
+    activity1 = new Activity(activityData[0]);
   });
 
   it('Should be a function', () => {
@@ -171,9 +172,9 @@ describe('User', () => {
   });
 
   it('Should store a user\'s activity data', () => {
-    user1.activityData.push(activity);
+    user1.activityData.push(activity1);
 
-    expect(user1.activityData).to.deep.equal([activity]);
+    expect(user1.activityData).to.deep.equal([activity1]);
     expect(user1.activityData.length).to.equal(1);
   });
 });
