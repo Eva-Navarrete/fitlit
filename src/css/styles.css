@@ -22,10 +22,11 @@ body {
 }
 
 h1 {
-  margin-top: 30px;
+  margin-top: 20px;
   font-size: 50px;
 }
 
+ /* DeskTop Screen ꜜ */
 .card-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr ;
@@ -72,7 +73,7 @@ h1 {
 }
 
 .flip-card-back {
-  background-color: blue;
+  background-color: rgb(190, 190, 190);
   transform: rotateY(180deg);
 }
 
@@ -113,6 +114,22 @@ img {
 
 .friends-card {
   grid-area: friends-card;
+}
+
+@media screen and (max-width: 620px) {
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      "user-card user-card"
+      "step-card sleep-card"
+      "miles-card hydro-card"
+      "friends-card friends-card";
+    grid-gap: 1rem;
+    width: 90vw;
+    height: 90vh;
+  }
 }
 /* body, html {
   background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
