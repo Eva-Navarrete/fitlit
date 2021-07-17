@@ -10,7 +10,7 @@ const activityData = require('../src/data/activityTestData');
 
 describe('User', () => {
   let user1;
-  let activity1,activity1, activity2, activity3, activity4, activity5, activity6, activity7;
+  let activity1, activity2, activity3, activity4, activity5, activity6, activity7, activity8;
   let sleep1, sleep2, sleep3, sleep4, sleep5, sleep6, sleep7;
   let hydration1, hydration2, hydration3, hydration4, hydration5, hydration6, hydration7, hydration8;
 
@@ -194,33 +194,35 @@ describe('User', () => {
     expect(user1.activityData.length).to.equal(8);
   });
 
-  it.skip('Should return the miles walked by a user, given date and stride length', () => {
+  it('Should return the miles walked by a user, given date and stride length', () => {
     const miles1 = user1.getDailyMiles("2019/06/15");
     const miles2 = user1.getDailyMiles("2019/06/16");
-    // const miles3 = user1.getDailyMiles("2019/06/35"); sad path
+    const miles3 = user1.getDailyMiles("2019/06/35");
 
     expect(miles1).to.equal(3);
     expect(miles2).to.equal(3.7);
-    // expect(miles3).to.equal(null); sad path
+    expect(miles3).to.equal(null);
   });
 
-  it.skip('Should return how many minutes a user was active on a certain date', () => {
+  it('Should return how many minutes a user was active on a certain date', () => {
     const minutesActive1 = user1.getMinutesActive("2019/06/15");
     const minutesActive2 = user1.getMinutesActive("2019/06/16");
+    const minutesActive3 = user1.getMinutesActive("2019/06/35");
 
     expect(minutesActive1).to.equal(140);
     expect(minutesActive2).to.equal(138);
+    expect(minutesActive3).to.equal(null);
   });
 
-  it.skip('Should return how many minutes a user was active per week', () => {
+  it('Should return how many minutes a user was active on average per week', () => {
     const minutesAvgActive1 = user1.getAvgMinutesActive("2019/06/22");
-    // const getAvgMinutesActive2 = user1.getAvgMinutesActive("2019/06/35"); sad path
+    const minutesAvgActive2 = user1.getAvgMinutesActive("2019/06/35");
 
     expect(minutesAvgActive1).to.equal(124);
-    // expect(minutesAvgActive2).to.equal(null); sad path
+    expect(minutesAvgActive2).to.equal(null);
   });
 
-  it.skip('Should check if a user reached their step on a certain date', () => {
+  it('Should check if a user reached their step on a certain date', () => {
     const stepGoal1 = user1.evaluateStepGoal("2019/06/15");
     const stepGoal2 = user1.evaluateStepGoal("2019/06/20");
 
@@ -228,13 +230,13 @@ describe('User', () => {
     expect(stepGoal2).to.equal(true);
   });
 
-  it.skip('Should return all days that a user exceeded their step goal', () => {
+  it('Should return all days that a user exceeded their step goal', () => {
     const exceedGoal1 = user1.returnStepGoalMet();
 
     expect(exceedGoal1).to.deep.equal(["2019/06/20", "2019/06/21"]);
   });
 
-  it.skip('Should return a user\'s all-time stair climbing record', () => {
+  it('Should return a user\'s all-time stair climbing record', () => {
     const stairRecord = user1.getStairRecord();
 
     expect(stairRecord).to.equal(35);
