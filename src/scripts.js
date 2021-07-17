@@ -17,17 +17,20 @@ console.log('This is the JavaScript entry file - your code begins here.');
 
 // import userData from './data/users';
 import UserRepository from './UserRepository';
+import User from './User';
+import Sleep from './Sleep';
+import Hydration from './Hydration';
+import Activity from './Activity';
 let userData;
 
-window.onload = generateApiCalls();
+window.onload = generateUserApi();
 
-function generateApiCalls() {
+function generateUserApi() {
   console.log('WTf is going on!!')
   const fetch = fetchAllData()
   .then(data => {
      userData = data[0];
-     console.log(userData);
+     console.log(userData)
      return;
    });
-
 };
