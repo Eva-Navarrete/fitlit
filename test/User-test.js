@@ -239,7 +239,4 @@ describe('User', () => {
 
     expect(stairRecord).to.equal(35);
   });
-
-  it
-
 });
