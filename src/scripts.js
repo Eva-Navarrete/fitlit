@@ -77,8 +77,6 @@ function renderSleepData(userData) {
   const recentSleep = userData.sleepData.slice(-1);
   const avgHrs = userData.getAvgHoursSlept();
   const avgQlty = userData.getAvgSleepQuality();
-  console.log('recent',recentSleep);
-  console.log('u',userData);
   sleep.innerHTML = `You slept  ${recentSleep[0].hoursSlept} hrs <br> Sleep Score: ${recentSleep[0].sleepQuality}`
   avgSleep.innerHTML = `Average Hrs Slept: ${avgHrs} <br> Average Sleep Quality: ${avgQlty}`
 }
