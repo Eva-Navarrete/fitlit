@@ -5,7 +5,6 @@ let userName = document.getElementById("userName");
 let userInfo = document.getElementById("userInfo");
 let dailyHydro = document.getElementById("dailyHydro");
 
-
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
 import { fetchAllData } from './apiCalls';
@@ -15,8 +14,6 @@ import './images/turing-logo.png';
 import './images/mario-run.png';
 import './images/mushroom.png';
 import './images/water-bottle.png';
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
 
@@ -32,16 +29,13 @@ let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
 window.onload = fetchData();
 
 function fetchData() {
-  console.log('WTf is going on!!')
   const fetch = fetchAllData()
   .then(data => {
      fetchedUser = data[0].userData;
      fetchedSleep = data[1].sleepData;
      fetchedActivity = data[2].activityData;
      fetchedHydration = data[3].hydrationData;
-     console.log(fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration)
      instantiateClasses(fetchedUser, fetchedHydration, fetchedSleep, fetchedActivity);
-
      return;
    });
 };
@@ -59,8 +53,6 @@ function instantiateClasses(userData, hydrationData, sleepData, activityData) {
   randomUser.sleepData = allSleep.filter(sleep => sleep.userID === randomUser.id);
   randomUser.hydrationData = allHydration.filter(hydro => hydro.userID === randomUser.id);
   randomUser.activityData = allActivity.filter(active => active.userID === randomUser.id);
-  console.log('USER <>>>>', randomUser);
-  console.log('USERREPO <>>>', userRepo)
   renderUserData(randomUser, userRepo);
   renderHydrationData(randomUser);
 }
