@@ -46,11 +46,11 @@ function fetchData() {
 
 function instantiateUsers(data) {
   const allUsers = fetchedUser.map(user => new User(user));
-  const randomUser = allUsers[getRandomIndex(allUsers)];
-  console.log("randomUser <>>>>", allUsers[getRandomIndex(allUsers)]);
+  const userRepo = new UserRepository(allUsers);
+  const randomUser = userRepo.users[getRandomIndex(userRepo.users)];
   userWelcome.innerHTML = `Welcome ${randomUser.returnName()}`;
   userName.innerHTML = `${randomUser.name}`;
-  userInfo.innerHTML = `address: ${randomUser.address} <br> email: ${randomUser.email} <br> stride length: ${randomUser.strideLength}`;
+  userInfo.innerHTML = `Address: ${randomUser.address} <br> Email: ${randomUser.email} <br> Stride Length: ${randomUser.strideLength} <br> Daily Step Goal: ${randomUser.dailyStepGoal} <br> Community Average Step Goal: ${userRepo.getAllUsersAvgSteps()}`;
 }
 
 function getRandomIndex(array) {
