@@ -3,6 +3,7 @@
 let userWelcome = document.getElementById("userWelcome");
 let userName = document.getElementById("userName");
 let userInfo = document.getElementById("userInfo");
+let dailyHydro = document.getElementById("dailyHydro");
 
 
 // An example of how you tell webpack to use a CSS
@@ -51,23 +52,28 @@ function instantiateClasses(userData, hydrationData, sleepData, activityData) {
   const allActivity = activityData.map(active => new Activity(active));
   const allUsers = userData.map(user => new User(user));
   const userRepo = new UserRepository(allUsers);
-  userRepo.allSleepData.push(allSleep);
-  userRepo.allActivityData.push(allActivity);
+  userRepo.allSleepData = (allSleep);
+  userRepo.allActivityData = (allActivity);
   const index = getRandomIndex(userRepo.users);
   const randomUser = userRepo.users[index];
-  randomUser.sleepData.push(allSleep.filter(sleep => sleep.userID === randomUser.id));
-  randomUser.hydrationData.push(allHydration.filter(hydro => hydro.userID === randomUser.id));
-  randomUser.activityData.push(allActivity.filter(active => active.userID === randomUser.id));
+  randomUser.sleepData = allSleep.filter(sleep => sleep.userID === randomUser.id);
+  randomUser.hydrationData = allHydration.filter(hydro => hydro.userID === randomUser.id);
+  randomUser.activityData = allActivity.filter(active => active.userID === randomUser.id);
   console.log('USER <>>>>', randomUser);
   console.log('USERREPO <>>>', userRepo)
   renderUserData(randomUser, userRepo);
+  renderHydrationData(randomUser);
 }
-
 
 function renderUserData(userData, userRepoData) {
   userWelcome.innerHTML = `Welcome ${userData.returnName()}`;
   userName.innerHTML = `${userData.name}`;
   userInfo.innerHTML = `Address: ${userData.address} <br> Email: ${userData.email} <br> Stride Length: ${userData.strideLength} <br> Daily Step Goal: ${userData.dailyStepGoal} <br> Community Average Step Goal: ${userRepoData.getAllUsersAvgSteps()}`;
+}
+
+function renderHydrationData(userData) {
+  const recentHydro = userData.hydrationData.slice(-1);
+  dailyHydro.innerText = `${recentHydro[0].numOunces} ounces`
 }
 
 function getRandomIndex(array) {
