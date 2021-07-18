@@ -39,18 +39,35 @@ function fetchData() {
      fetchedActivity = data[2].activityData;
      fetchedHydration = data[3].hydrationData;
      console.log(fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration)
-     instantiateUsers(fetchedUser);
+     instantiateClasses(fetchedUser, fetchedHydration, fetchedSleep, fetchedActivity);
+
      return;
    });
 };
 
-function instantiateUsers(data) {
-  const allUsers = fetchedUser.map(user => new User(user));
+function instantiateClasses(userData, hydrationData, sleepData, activityData) {
+  const allHydration = hydrationData.map(hydro => new Hydration(hydro));
+  const allSleep = sleepData.map(sleep => new Sleep(sleep));
+  const allActivity = activityData.map(active => new Activity(active));
+  const allUsers = userData.map(user => new User(user));
   const userRepo = new UserRepository(allUsers);
-  const randomUser = userRepo.users[getRandomIndex(userRepo.users)];
-  userWelcome.innerHTML = `Welcome ${randomUser.returnName()}`;
-  userName.innerHTML = `${randomUser.name}`;
-  userInfo.innerHTML = `Address: ${randomUser.address} <br> Email: ${randomUser.email} <br> Stride Length: ${randomUser.strideLength} <br> Daily Step Goal: ${randomUser.dailyStepGoal} <br> Community Average Step Goal: ${userRepo.getAllUsersAvgSteps()}`;
+  userRepo.allSleepData.push(allSleep);
+  userRepo.allActivityData.push(allActivity);
+  const index = getRandomIndex(userRepo.users);
+  const randomUser = userRepo.users[index];
+  randomUser.sleepData.push(allSleep.filter(sleep => sleep.userID === randomUser.id));
+  randomUser.hydrationData.push(allHydration.filter(hydro => hydro.userID === randomUser.id));
+  randomUser.activityData.push(allActivity.filter(active => active.userID === randomUser.id));
+  console.log('USER <>>>>', randomUser);
+  console.log('USERREPO <>>>', userRepo)
+  renderUserData(randomUser, userRepo);
+}
+
+
+function renderUserData(userData, userRepoData) {
+  userWelcome.innerHTML = `Welcome ${userData.returnName()}`;
+  userName.innerHTML = `${userData.name}`;
+  userInfo.innerHTML = `Address: ${userData.address} <br> Email: ${userData.email} <br> Stride Length: ${userData.strideLength} <br> Daily Step Goal: ${userData.dailyStepGoal} <br> Community Average Step Goal: ${userRepoData.getAllUsersAvgSteps()}`;
 }
 
 function getRandomIndex(array) {
