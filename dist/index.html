@@ -42,11 +42,14 @@
           <div class="flip-card-inner">
             <section class="flip-card-front">
               <h2>Sleep</h2>
-              <img src="../src/images/mushroom.png" alt="mushroom">
+              <p id="sleep"></p>
+              <p class="average-sleep" id="avgSleep"></p>
+              <!-- <img src="../src/images/mushroom.png" alt="mushroom"> -->
             </section>
             <section class="flip-card-back">
-              <h2>Placeholder Sleep data</h2>
-              <img src="../src/images/mushroom.png" alt="mushroom">
+              <h2>Sleep</h2>
+              <canvas id="sleepChart" width="300" height="300"></canvas>
+              <!-- <img src="../src/images/mushroom.png" alt="mushroom"> -->
             </section>
           </div>
         </div>
@@ -68,7 +71,10 @@
               <!-- <img src="../src/images/water-bottle.png" alt="water-bottle"> -->
             </section>
             <section class="flip-card-back">
-              <h2>Placeholder hydration chart</h2>
+              <h2>Weekly Hydration Log</h2>
+              <div>
+                <canvas id="hydroChart" width="300" height="300"></canvas>
+              </div>
             </section>
           </div>
         </div>
@@ -89,5 +95,7 @@
 <!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
 
     <script src="bundle.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   </body>
 </html>
