@@ -107,6 +107,11 @@ img {
   grid-area: sleep-card;
 }
 
+.average-sleep {
+  font-size: 1.2vw;
+  margin-top: 20px;
+}
+
 .miles-card {
   grid-area: miles-card;
 }
@@ -145,5 +150,9 @@ img {
 
   p {
     font-size: 3vw;
+  }
+
+  .average-sleep {
+    font-size: 2.2vw;
   }
 }
