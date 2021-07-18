@@ -1,5 +1,9 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
+let userWelcome = document.getElementById("userWelcome");
+let userName = document.getElementById("userName");
+let userInfo = document.getElementById("userInfo");
+
 
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
@@ -42,5 +46,13 @@ function fetchData() {
 
 function instantiateUsers(data) {
   const allUsers = fetchedUser.map(user => new User(user));
-  console.log("instantiateUsers <>>>>", allUsers);
+  const randomUser = allUsers[getRandomIndex(allUsers)];
+  console.log("randomUser <>>>>", allUsers[getRandomIndex(allUsers)]);
+  userWelcome.innerHTML = `Welcome ${randomUser.returnName()}`;
+  userName.innerHTML = `${randomUser.name}`;
+  userInfo.innerHTML = `address: ${randomUser.address} <br> email: ${randomUser.email} <br> stride length: ${randomUser.strideLength}`;
+}
+
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
 }
