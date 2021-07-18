@@ -4,7 +4,10 @@ let userWelcome = document.getElementById("userWelcome");
 let userName = document.getElementById("userName");
 let userInfo = document.getElementById("userInfo");
 let dailyHydro = document.getElementById("dailyHydro");
-
+let sleep = document.getElementById("sleep");
+let avgSleep = document.getElementById("avgSleep");
+let miles = document.getElementById("miles");
+let minActive = document.getElementById("minActive");
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
 import { fetchAllData } from './apiCalls';
@@ -55,17 +58,38 @@ function instantiateClasses(userData, hydrationData, sleepData, activityData) {
   randomUser.activityData = allActivity.filter(active => active.userID === randomUser.id);
   renderUserData(randomUser, userRepo);
   renderHydrationData(randomUser);
+  renderSleepData(randomUser);
+  renderActivityData(randomUser, userRepo);
 }
 
 function renderUserData(userData, userRepoData) {
   userWelcome.innerHTML = `Welcome ${userData.returnName()}`;
   userName.innerHTML = `${userData.name}`;
-  userInfo.innerHTML = `Address: ${userData.address} <br> Email: ${userData.email} <br> Stride Length: ${userData.strideLength} <br> Daily Step Goal: ${userData.dailyStepGoal} <br> Community Average Step Goal: ${userRepoData.getAllUsersAvgSteps()}`;
+  userInfo.innerHTML = `Address: ${userData.address} <br> Email: ${userData.email} <br> Stride Length: ${userData.strideLength} <br> Daily Step Goal: ${userData.dailyStepGoal} <br> Community Average Step Goal: ${userRepoData.getAllUsersAvgStepGoal()}`;
 }
 
 function renderHydrationData(userData) {
   const recentHydro = userData.hydrationData.slice(-1);
-  dailyHydro.innerText = `${recentHydro[0].numOunces} ounces`
+  dailyHydro.innerText = `You drank ${recentHydro[0].numOunces} ounces of water today!`
+}
+
+function renderSleepData(userData) {
+  const recentSleep = userData.sleepData.slice(-1);
+  const avgHrs = userData.getAvgHoursSlept();
+  const avgQlty = userData.getAvgSleepQuality();
+  console.log('recent',recentSleep);
+  console.log('u',userData);
+  sleep.innerHTML = `You slept  ${recentSleep[0].hoursSlept} hrs <br> Sleep Score: ${recentSleep[0].sleepQuality}`
+  avgSleep.innerHTML = `Average Hrs Slept: ${avgHrs} <br> Average Sleep Quality: ${avgQlty}`
+}
+
+function renderActivityData(userData, userRepoData) {
+  const recentDate = userData.activityData.slice(-1)[0].date;
+  const recentMinutes = userData.getMinutesActive(recentDate);
+  const recentMiles = userData.getDailyMiles(recentDate);
+  const recentSteps = userData.activityData.slice(-1)[0].numSteps;
+  miles.innerHTML = `${recentMiles} miles`
+  minActive.innerHTML =`${recentSteps} steps <br> ${recentMinutes} min active <br> ${recentDate}`
 }
 
 function getRandomIndex(array) {
