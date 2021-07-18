@@ -35,7 +35,7 @@ h1 {
     "miles-card hydro-card friends-card friends-card";
   grid-gap: 1rem;
   width: 90vw;
-  height: 90vh;
+  height: 75vh;
 }
 
 .flip-card {
@@ -90,6 +90,10 @@ section {
   opacity: 80%;
 }
 
+p {
+  font-size: 1.8vw;
+}
+
 .step-card {
   grid-area: step-card;
 }
@@ -137,5 +141,9 @@ img {
 
   h2 {
     font-size: 6vw;
+  }
+
+  p {
+    font-size: 3vw;
   }
 }
