@@ -21,16 +21,26 @@ import User from './User';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
-let userData;
 
-window.onload = generateUserApi();
+let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
 
-function generateUserApi() {
+window.onload = fetchData();
+
+function fetchData() {
   console.log('WTf is going on!!')
   const fetch = fetchAllData()
   .then(data => {
-     userData = data[0];
-     console.log(userData)
+     fetchedUser = data[0].userData;
+     fetchedSleep = data[1].sleepData;
+     fetchedActivity = data[2].activityData;
+     fetchedHydration = data[3].hydrationData;
+     console.log(fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration)
+     instantiateUsers(fetchedUser);
      return;
    });
 };
+
+function instantiateUsers(data) {
+  const allUsers = fetchedUser.map(user => new User(user));
+  console.log("instantiateUsers <>>>>", allUsers);
+}
