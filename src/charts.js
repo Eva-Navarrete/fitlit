@@ -1,5 +1,4 @@
 // USER GOALS CHART
-
 const renderHydrationChart = (data) => {
   return new Chart(document.getElementById("hydroChart"), {
     type: 'bar',
@@ -22,37 +21,74 @@ const renderHydrationChart = (data) => {
   });
 }
 
-const renderActivityChart = () => {
-  return new Chart(document.getElementById("activityChart"), {
+const renderActivityChart1 = (data, repoData) => {
+  const date = data.activityData.slice(-1)[0].date
+  return new Chart(document.getElementById("activityChart1"), {
     type: 'bar',
     data: {
-      labels: ["2019/06/01", "2019/06/02", "2019/06/03", "2019/06/04", "2019/06/05", "2019/06/06", "2019/06/07"],
+      labels: ['My Steps', 'Avg Steps'],
       datasets: [{
-        label: "Ounces",
-        backgroundColor: ['blue', 'cyan', 'lime green', 'purple', 'pink', 'red', 'yellow'],
-        data: [10, 20, 30, 40, 50, 60, 70]
+        backgroundColor: ['#7FFF00', '#00FFFF'],
+        data: [data.activityData.slice(-1)[0].numSteps, repoData.getAllAvgSteps(date)]
       }]
     },
     options: {
-      legend: {
-        display: false
-      },
-      title: {
-        display: true,
-        text: 'Weekly Hydration Log'
+      plugins: {
+        legend: {
+          display: false
+        },
       }
     }
   })
 }
 
+const renderActivityChart2 = (data, repoData) => {
+  const date = data.activityData.slice(-1)[0].date;
+  return new Chart(document.getElementById("activityChart2"), {
+    type: 'bar',
+    data: {
+      labels: ['My Activity', 'Avg Activity'], //Not Displaying Avg
+      datasets: [{
+        backgroundColor: ['#7FFF00', '#00FFFF'],
+        data: [data.activityData.slice(-1)[0].minutesActive, repoData.getAllAvgMinutes(date)]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+      }
+    }
+  })
+}
+const renderActivityChart3 = (data, repoData) => {
+  const date = data.activityData.slice(-1)[0].date;
+  return new Chart(document.getElementById("activityChart3"), {
+    type: 'bar',
+    data: {
+      labels: ['My Stairs', 'Avg Stairs'],
+      datasets: [{
+        backgroundColor: ['#7FFF00', '#00FFFF'],
+        data: [data.activityData.slice(-1)[0].flightsOfStairs, repoData.getAllAvgStairs(date)]
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        },
+      }
+    }
+  })
+}
 
-// const allCharts [
-//      hydrationChart()
-// ];
 // USER GOAL VS OTHERS Chart
 
 //ACTIVITY USER STEPS/MILES/MINACTIVE PER DAY
 export {
   renderHydrationChart,
-  renderActivityChart
+  renderActivityChart1,
+  renderActivityChart2,
+  renderActivityChart3
 }
