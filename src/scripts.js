@@ -8,9 +8,12 @@ let sleep = document.getElementById("sleep");
 let avgSleep = document.getElementById("avgSleep");
 let miles = document.getElementById("miles");
 let minActive = document.getElementById("minActive");
+let dailySteps = document.getElementById("dailySteps");
 // An example of how you tell webpack to use a CSS
 import './css/styles.css';
-import { fetchAllData } from './apiCalls';
+import {
+  fetchAllData
+} from './apiCalls';
 
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
@@ -28,8 +31,18 @@ import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
 import Chart from "chart.js/auto";
-import { renderHydrationChart } from './charts'
-import { renderActivityChart } from './charts'
+import {
+  renderHydrationChart
+} from './charts';
+import {
+  renderActivityChart1
+} from './charts';
+import {
+  renderActivityChart2
+} from './charts';
+import {
+  renderActivityChart3
+} from './charts';
 
 
 let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
@@ -38,14 +51,14 @@ window.onload = fetchData();
 
 function fetchData() {
   const fetch = fetchAllData()
-  .then(data => {
-     fetchedUser = data[0].userData;
-     fetchedSleep = data[1].sleepData;
-     fetchedActivity = data[2].activityData;
-     fetchedHydration = data[3].hydrationData;
-     instantiateClasses(fetchedUser, fetchedHydration, fetchedSleep, fetchedActivity);
-     return;
-   });
+    .then(data => {
+      fetchedUser = data[0].userData;
+      fetchedSleep = data[1].sleepData;
+      fetchedActivity = data[2].activityData;
+      fetchedHydration = data[3].hydrationData;
+      instantiateClasses(fetchedUser, fetchedHydration, fetchedSleep, fetchedActivity);
+      return;
+    });
 };
 
 function instantiateClasses(userData, hydrationData, sleepData, activityData) {
@@ -75,7 +88,7 @@ function renderUserData(userData, userRepoData) {
 
 function renderHydrationData(userData) {
   const recentHydro = userData.hydrationData.slice(-1);
-  dailyHydro.innerText = `You drank ${recentHydro[0].numOunces} ounces of water today!`
+  dailyHydro.innerText = `${recentHydro[0].numOunces} oz H2O`
   renderHydrationChart(userData);
 }
 
@@ -92,13 +105,14 @@ function renderActivityData(userData, userRepoData) {
   const recentMinutes = userData.getMinutesActive(recentDate);
   const recentMiles = userData.getDailyMiles(recentDate);
   const recentSteps = userData.activityData.slice(-1)[0].numSteps;
-  miles.innerHTML = `${recentMiles} miles`
-  minActive.innerHTML =`${recentSteps} steps <br> ${recentMinutes} min active <br> ${recentDate}`
+  dailySteps.innerHTML = `${recentSteps} steps`;
+  miles.innerHTML = `${recentMiles} miles`;
+  minActive.innerHTML = `${recentMinutes} min active <br> ${recentDate}`;
 
-  renderActivityChart();
+  renderActivityChart1(userData, userRepoData);
+  renderActivityChart2(userData, userRepoData);
+  renderActivityChart3(userData, userRepoData);
 }
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
