@@ -124,6 +124,21 @@ img {
   grid-area: friends-card;
 }
 
+.hydro-log {
+  font-size: 2vw;
+}
+/* Charts */
+.hydro-chart {
+  height: 100%;
+  width: 90%;
+}
+
+.chart-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* MOBILE 📱 */
 @media screen and (max-width: 620px) {
   h1 {
