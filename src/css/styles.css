@@ -1,5 +1,5 @@
 * {
-  font-family: 'VT323', monospace;
+  font-family: 'Ubuntu', normal;
   color: black;
 }
 
@@ -77,7 +77,7 @@ h1 {
 
 h2 {
   margin: 15px 0px;
-  font-size: 3vw;
+  font-size: 2vw;
 }
 
 section {
@@ -91,11 +91,15 @@ section {
 }
 
 p {
-  font-size: 1.8vw;
+  font-size: 1.5vw;
 }
 
 .step-card {
   grid-area: step-card;
+}
+
+.large-text {
+  font-size: 3vw;
 }
 
 img {
@@ -137,6 +141,16 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.community-chart {
+  height: 100%;
+  width: 100%;
+}
+
+.activity-chart {
+  height: 100%;
+  width: 35%;
 }
 
 /* MOBILE 📱 */
