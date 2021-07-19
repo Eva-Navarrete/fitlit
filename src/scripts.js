@@ -76,7 +76,7 @@ function renderUserData(userData, userRepoData) {
 function renderHydrationData(userData) {
   const recentHydro = userData.hydrationData.slice(-1);
   dailyHydro.innerText = `You drank ${recentHydro[0].numOunces} ounces of water today!`
-  renderHydrationChart();
+  renderHydrationChart(userData);
 }
 
 function renderSleepData(userData) {
