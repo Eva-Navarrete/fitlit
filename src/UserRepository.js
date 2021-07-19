@@ -9,7 +9,7 @@ class UserRepository {
     return this.users.find(user => user.id === id);
   }
 
-  getAllUsersAvgSteps() {
+  getAllUsersAvgStepGoal() {
     return this.users.reduce((acc, user) => {
       return acc + user.dailyStepGoal;
     }, 0) / this.users.length;
@@ -22,7 +22,7 @@ class UserRepository {
     return Math.round(avgQuality * 10) / 10;
   }
 
-  getAvgStairs(date) {
+  getAllAvgStairs(date) {
     return Math.round(this.allActivityData.reduce((acc,activity) => {
       if (activity.date === date) {
         acc += activity.flightsOfStairs;
@@ -31,7 +31,7 @@ class UserRepository {
     }, 0) * 10 / this.allActivityData.filter(activity => activity.date === date).length) / 10;
   }
 
-  getAvgSteps(date) {
+  getAllAvgSteps(date) {
     return Math.round(this.allActivityData.reduce((acc, activity) => {
       if (activity.date === date) {
         acc += activity.numSteps;
@@ -40,7 +40,7 @@ class UserRepository {
     }, 0) / this.allActivityData.filter(activity => activity.date === date).length)
   }
 
-  getAvgMinutes(date) {
+  getAllAvgMinutes(date) {
     return Math.round(this.allActivityData.reduce((acc, activity) => {
       if(activity.date === date) {
         acc += activity.minutesActive;

@@ -38,7 +38,7 @@ describe('User Repository', () => {
   });
 
   it('should be able to return the average step goal of all users', () => {
-    expect(userRepo.getAllUsersAvgSteps()).to.equal(10000);
+    expect(userRepo.getAllUsersAvgStepGoal()).to.equal(10000);
   });
 
   it('should be able to store all user\'s sleep data', () => {
@@ -58,24 +58,24 @@ describe('User Repository', () => {
   });
 
   it('should return the average of stairs climbed by all users on a specific date', () => {
-    const avgStairs1 = userRepo.getAvgStairs("2019/06/15");
-    const avgStairs2 = userRepo.getAvgStairs("2019/06/17");
+    const avgStairs1 = userRepo.getAllAvgStairs("2019/06/15");
+    const avgStairs2 = userRepo.getAllAvgStairs("2019/06/17");
 
     expect(avgStairs1).to.equal(20.3);
     expect(avgStairs2).to.equal(33);
   });
 
   it('should return the average steps taken on a specific day by all users', () => {
-    const avgSteps1 = userRepo.getAvgSteps("2019/06/15");
-    const avgSteps2 = userRepo.getAvgSteps("2019/06/17");
+    const avgSteps1 = userRepo.getAllAvgSteps("2019/06/15");
+    const avgSteps2 = userRepo.getAllAvgSteps("2019/06/17");
 
     expect(avgSteps1).to.equal(6146);
     expect(avgSteps2).to.equal(7402);
   });
 
   it('should return the average minutes active for all users on a specific date', () => {
-    const avgMinutes1 = userRepo.getAvgMinutes("2019/06/15");
-    const avgMinutes2 = userRepo.getAvgMinutes("2019/06/17");
+    const avgMinutes1 = userRepo.getAllAvgMinutes("2019/06/15");
+    const avgMinutes2 = userRepo.getAllAvgMinutes("2019/06/17");
 
     expect(avgMinutes1).to.equal(156);
     expect(avgMinutes2).to.equal(116);
