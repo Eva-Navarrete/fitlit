@@ -12,11 +12,12 @@ let minActive = document.getElementById("minActive");
 import './css/styles.css';
 import { fetchAllData } from './apiCalls';
 
+
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-import './images/mario-run.png';
-import './images/mushroom.png';
-import './images/water-bottle.png';
+// import './images/mario-run.png';
+// import './images/mushroom.png';
+// import './images/water-bottle.png';
 
 // An example of how you tell webpack to use a JS file
 
@@ -26,6 +27,10 @@ import User from './User';
 import Sleep from './Sleep';
 import Hydration from './Hydration';
 import Activity from './Activity';
+import Chart from "chart.js/auto";
+import { renderHydrationChart } from './charts'
+import { renderActivityChart } from './charts'
+
 
 let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
 
@@ -71,6 +76,7 @@ function renderUserData(userData, userRepoData) {
 function renderHydrationData(userData) {
   const recentHydro = userData.hydrationData.slice(-1);
   dailyHydro.innerText = `You drank ${recentHydro[0].numOunces} ounces of water today!`
+  renderHydrationChart();
 }
 
 function renderSleepData(userData) {
@@ -88,7 +94,11 @@ function renderActivityData(userData, userRepoData) {
   const recentSteps = userData.activityData.slice(-1)[0].numSteps;
   miles.innerHTML = `${recentMiles} miles`
   minActive.innerHTML =`${recentSteps} steps <br> ${recentMinutes} min active <br> ${recentDate}`
+
+  renderActivityChart();
 }
+
+
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
