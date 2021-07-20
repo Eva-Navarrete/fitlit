@@ -83,6 +83,52 @@ const renderActivityChart3 = (data, repoData) => {
   })
 }
 
+const renderActivityChart4 = (data) => {
+  const date = data.activityData.slice(-1)[0].date;
+  console.log(data.activityData.slice(-7).map(active => active.date));
+  return new Chart(document.getElementById("activityChart4"), {
+
+    type: 'line',
+    data: {
+      labels: data.activityData.slice(-7).map(active => active.date),
+      datasets: [{
+        label: 'Steps',
+        backgroundColor: ['#7FFF00'],
+        data: data.activityData.slice(-7).map(active => active.numSteps)
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+    }
+  })
+}
+
+const renderActivityChart5 = (data) => {
+  const date = data.activityData.slice(-1)[0].date;
+  return new Chart(document.getElementById("activityChart5"), {
+    type: 'line',
+    data: {
+      labels: data.activityData.slice(-7).map(active => active.date),
+      datasets: [{
+        label: 'Stairs',
+        backgroundColor: ['#7FFF00'],
+        data: data.activityData.slice(-7).map(active => active.flightsOfStairs),
+      }, {
+        label: 'Minutes Active',
+        backgroundColor: ['#00FFFF'],
+        data: data.activityData.slice(-7).map(active => active.minutesActive),
+      }]
+    },
+    options: {
+      legend: {
+        display: false
+      },
+    }
+  })
+}
+
 // USER GOAL VS OTHERS Chart
 
 //ACTIVITY USER STEPS/MILES/MINACTIVE PER DAY
@@ -90,5 +136,7 @@ export {
   renderHydrationChart,
   renderActivityChart1,
   renderActivityChart2,
-  renderActivityChart3
+  renderActivityChart3,
+  renderActivityChart4,
+  renderActivityChart5
 }
