@@ -18,13 +18,9 @@ import {
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-// import './images/mario-run.png';
-// import './images/mushroom.png';
-// import './images/water-bottle.png';
 
 // An example of how you tell webpack to use a JS file
 
-// import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
@@ -42,6 +38,21 @@ import {
 } from './charts';
 import {
   renderActivityChart3
+} from './charts';
+import {
+  renderActivityChart4
+} from './charts';
+import {
+  renderActivityChart5
+} from './charts';
+import {
+  renderSleepChart1
+} from './charts';
+import {
+  renderSleepChart2
+} from './charts';
+import {
+  renderWeeklyStepChart
 } from './charts';
 
 
@@ -81,7 +92,7 @@ function instantiateClasses(userData, hydrationData, sleepData, activityData) {
 }
 
 function renderUserData(userData, userRepoData) {
-  userWelcome.innerHTML = `Welcome ${userData.returnName()}`;
+  userWelcome.innerHTML = `Welcome, ${userData.returnName()}!`;
   userName.innerHTML = `${userData.name}`;
   userInfo.innerHTML = `Address: ${userData.address} <br> Email: ${userData.email} <br> Stride Length: ${userData.strideLength} <br> Daily Step Goal: ${userData.dailyStepGoal} <br> Community Average Step Goal: ${userRepoData.getAllUsersAvgStepGoal()}`;
 }
@@ -96,8 +107,9 @@ function renderSleepData(userData) {
   const recentSleep = userData.sleepData.slice(-1);
   const avgHrs = userData.getAvgHoursSlept();
   const avgQlty = userData.getAvgSleepQuality();
-  sleep.innerHTML = `You slept  ${recentSleep[0].hoursSlept} hrs <br> Sleep Score: ${recentSleep[0].sleepQuality}`
-  avgSleep.innerHTML = `Average Hrs Slept: ${avgHrs} <br> Average Sleep Quality: ${avgQlty}`
+  sleep.innerHTML = `You slept  ${recentSleep[0].hoursSlept} hrs <br> Sleep Score: ${recentSleep[0].sleepQuality}`;
+  avgSleep.innerHTML = `Average Hrs Slept: ${avgHrs} <br> Average Sleep Quality: ${avgQlty}`;
+  renderSleepChart1(userData);
 }
 
 function renderActivityData(userData, userRepoData) {
@@ -107,11 +119,14 @@ function renderActivityData(userData, userRepoData) {
   const recentSteps = userData.activityData.slice(-1)[0].numSteps;
   dailySteps.innerHTML = `${recentSteps} steps`;
   miles.innerHTML = `${recentMiles} miles`;
-  minActive.innerHTML = `${recentMinutes} min active <br> ${recentDate}`;
+  minActive.innerHTML = `${recentMinutes} min`;
 
   renderActivityChart1(userData, userRepoData);
   renderActivityChart2(userData, userRepoData);
   renderActivityChart3(userData, userRepoData);
+  renderActivityChart4(userData);
+  renderActivityChart5(userData);
+  renderWeeklyStepChart(userData)
 }
 
 function getRandomIndex(array) {

@@ -80,8 +80,12 @@ h2 {
   font-size: 2vw;
 }
 
+.welcome {
+  font-size: 3vw;
+  margin: auto;
+}
+
 section {
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,6 +103,7 @@ p {
 }
 
 .large-text {
+  margin-top: 5vh;
   font-size: 3vw;
 }
 
@@ -131,8 +136,9 @@ img {
 .hydro-log {
   font-size: 2vw;
 }
+
 /* Charts */
-.hydro-chart {
+.chart {
   height: 100%;
   width: 90%;
 }
@@ -143,7 +149,7 @@ img {
   align-items: center;
 }
 
-.community-chart {
+.community-chart, .user-activity-chart{
   height: 100%;
   width: 100%;
 }
@@ -174,7 +180,11 @@ img {
   }
 
   h2 {
-    font-size: 6vw;
+    font-size: 5vw;
+  }
+
+  .welcome {
+    font-size: 7vw;
   }
 
   p {
@@ -183,5 +193,19 @@ img {
 
   .average-sleep {
     font-size: 2.2vw;
+  }
+
+  .large-text {
+    margin-top: 3vh;
+    font-size: 7vw;
+  }
+
+  .hydro-log {
+    font-size: 4vw;
+  }
+
+  .user-chart {
+    height: 50px;
+    width: 10%;
   }
 }
