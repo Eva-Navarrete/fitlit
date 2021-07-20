@@ -109,7 +109,7 @@ width="150" height="auto" /></td>
 #### Project Manager
 <table>
     <tr>
-         <td> Heather Faerber <a href="https://github.com/CassandraGoose">GH</td>
+         <td> Cassandra Torske <a href="https://github.com/CassandraGoose">GH</td>
     </tr>
     </tr>
     <td><img src="https://avatars.githubusercontent.com/u/21070575?v=4" alt="Heather GH img"
