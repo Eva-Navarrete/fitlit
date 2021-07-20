@@ -11,14 +11,14 @@
   </head>
   <body>
     <header>
-      <h1>FitLit</h1>
+      <h1>💪FitLit🔥</h1>
     </header>
     <main>
       <div class="card-grid">
         <div class="user-card flip-card">
           <div class="flip-card-inner">
             <section class="flip-card-front">
-              <h2 id="userWelcome">Welcome User</h2>
+              <h2 class="welcome" id="userWelcome">Welcome User</h2>
             </section>
             <section class="flip-card-back">
               <h2 id="userName">User Name</h2>
@@ -34,7 +34,10 @@
               <!-- <img src="../src/images/mario-run.png" alt="mario-run"> -->
             </section>
             <section class="flip-card-back">
-              <h2>Daily Steps</h2>
+              <h2>Weekly Steps</h2>
+              <div class="step-chart chart-center">
+                <canvas id="weeklyStepChart" width="100%" height="60%"></canvas>
+              </div>
               <!-- <img src="../src/images/mario-run.png" alt="mario-run"> -->
             </section>
           </div>
@@ -49,7 +52,12 @@
             </section>
             <section class="flip-card-back">
               <h2>Sleep</h2>
-              <canvas id="sleepChart" width="300" height="300"></canvas>
+              <div class="sleep-chart">
+                <canvas id="sleepChart1" height="100" width="300"></canvas>
+              </div>
+              <div class="sleep-chart">
+                <canvas id="sleepChart2" height="100" width="300"></canvas>
+              </div>
               <!-- <img src="../src/images/mushroom.png" alt="mushroom"> -->
             </section>
           </div>
@@ -57,11 +65,12 @@
         <div class="miles-card flip-card">
           <div class="flip-card-inner">
             <section class="flip-card-front">
-              <h2 id="miles">Miles</h2>
-              <p id="minActive"></p>
+              <h2>Distance</h2>
+              <p class="large-text" id="miles"></p>
             </section>
             <section class="flip-card-back">
-              <h2>Placeholder Miles walked chart</h2>
+              <h2>Minutes Active</h2>
+              <p class="large-text" id="minActive"></p>
             </section>
           </div>
         </div>
