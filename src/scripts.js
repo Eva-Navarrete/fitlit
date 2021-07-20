@@ -43,6 +43,12 @@ import {
 import {
   renderActivityChart3
 } from './charts';
+import {
+  renderActivityChart4
+} from './charts';
+import {
+  renderActivityChart5
+} from './charts';
 
 
 let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
@@ -112,6 +118,8 @@ function renderActivityData(userData, userRepoData) {
   renderActivityChart1(userData, userRepoData);
   renderActivityChart2(userData, userRepoData);
   renderActivityChart3(userData, userRepoData);
+  renderActivityChart4(userData);
+  renderActivityChart5(userData);
 }
 
 function getRandomIndex(array) {
