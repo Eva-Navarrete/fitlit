@@ -6,7 +6,7 @@ const renderHydrationChart = (data) => {
       labels: data.hydrationData.slice(-7).map(hydro => hydro.date),
       datasets: [{
         label: 'Ounces',
-        backgroundColor: ['#191970'],
+        backgroundColor: ['#00FFFF'],
         data: data.getWeeklyOunces()
       }]
     },
@@ -49,8 +49,12 @@ const renderSleepChart1 = (data) => {
       labels: data.sleepData.slice(-7).map(sleep => sleep.date),
       datasets: [{
         label: 'Hours',
-        backgroundColor: ['#191970'],
+        backgroundColor: ['#00FFFF'],
         data: data.getWeeklySleepLog(date)
+      },{
+        label: 'Quality Score',
+        backgroundColor: ['#7FFF00'],
+        data: data.getWeeklySleepQualityLog(date)
       }]
     },
     options: {
@@ -111,7 +115,7 @@ const renderActivityChart2 = (data, repoData) => {
   return new Chart(document.getElementById("activityChart2"), {
     type: 'bar',
     data: {
-      labels: ['My Activity', 'Avg Activity'], //Not Displaying Avg
+      labels: ['My Activity', 'Avg Activity'],
       datasets: [{
         backgroundColor: ['#7FFF00', '#00FFFF'],
         data: [data.activityData.slice(-1)[0].minutesActive, repoData.getAllAvgMinutes(date)]
@@ -149,7 +153,6 @@ const renderActivityChart3 = (data, repoData) => {
 
 const renderActivityChart4 = (data) => {
   const date = data.activityData.slice(-1)[0].date;
-  console.log(data.activityData.slice(-7).map(active => active.date));
   return new Chart(document.getElementById("activityChart4"), {
 
     type: 'line',
@@ -193,9 +196,6 @@ const renderActivityChart5 = (data) => {
   })
 }
 
-// USER GOAL VS OTHERS Chart
-
-//ACTIVITY USER STEPS/MILES/MINACTIVE PER DAY
 export {
   renderHydrationChart,
   renderActivityChart1,
