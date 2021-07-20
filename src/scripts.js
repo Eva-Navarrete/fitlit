@@ -18,13 +18,9 @@ import {
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png';
-// import './images/mario-run.png';
-// import './images/mushroom.png';
-// import './images/water-bottle.png';
 
 // An example of how you tell webpack to use a JS file
 
-// import userData from './data/users';
 import UserRepository from './UserRepository';
 import User from './User';
 import Sleep from './Sleep';
@@ -114,7 +110,6 @@ function renderSleepData(userData) {
   sleep.innerHTML = `You slept  ${recentSleep[0].hoursSlept} hrs <br> Sleep Score: ${recentSleep[0].sleepQuality}`;
   avgSleep.innerHTML = `Average Hrs Slept: ${avgHrs} <br> Average Sleep Quality: ${avgQlty}`;
   renderSleepChart1(userData);
-  renderSleepChart2(userData);
 }
 
 function renderActivityData(userData, userRepoData) {
