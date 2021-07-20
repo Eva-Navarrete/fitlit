@@ -1,5 +1,3 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
 let userWelcome = document.getElementById("userWelcome");
 let userName = document.getElementById("userName");
 let userInfo = document.getElementById("userInfo");
@@ -9,17 +7,11 @@ let avgSleep = document.getElementById("avgSleep");
 let miles = document.getElementById("miles");
 let minActive = document.getElementById("minActive");
 let dailySteps = document.getElementById("dailySteps");
-// An example of how you tell webpack to use a CSS
+
 import './css/styles.css';
 import {
   fetchAllData
 } from './apiCalls';
-
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
-
-// An example of how you tell webpack to use a JS file
 
 import UserRepository from './UserRepository';
 import User from './User';
@@ -54,7 +46,6 @@ import {
 import {
   renderWeeklyStepChart
 } from './charts';
-
 
 let fetchedUser, fetchedSleep, fetchedActivity, fetchedHydration;
 
@@ -99,7 +90,7 @@ function renderUserData(userData, userRepoData) {
 
 function renderHydrationData(userData) {
   const recentHydro = userData.hydrationData.slice(-1);
-  dailyHydro.innerText = `${recentHydro[0].numOunces} oz H2O`
+  dailyHydro.innerText = `${recentHydro[0].numOunces} oz H2O`;
   renderHydrationChart(userData);
 }
 
@@ -126,7 +117,7 @@ function renderActivityData(userData, userRepoData) {
   renderActivityChart3(userData, userRepoData);
   renderActivityChart4(userData);
   renderActivityChart5(userData);
-  renderWeeklyStepChart(userData)
+  renderWeeklyStepChart(userData);
 }
 
 function getRandomIndex(array) {
