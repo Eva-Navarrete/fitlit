@@ -17,7 +17,71 @@ const renderHydrationChart = (data) => {
         }
       }
     }
+  });
+}
 
+const renderWeeklyStepChart = (data) => {
+  return new Chart(document.getElementById("weeklyStepChart"), {
+    type: 'bar',
+    data: {
+      labels: data.activityData.slice(-7).map(active => active.date),
+      datasets: [{
+        label: 'Steps',
+        backgroundColor: ['#7FFF00'],
+        data: data.activityData.slice(-7).map(active => active.numSteps)
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+}
+
+const renderSleepChart1 = (data) => {
+  const date = data.sleepData.slice(-1)[0].date;
+  return new Chart(document.getElementById("sleepChart1"), {
+    type: 'bar',
+    data: {
+      labels: data.sleepData.slice(-7).map(sleep => sleep.date),
+      datasets: [{
+        label: 'Hours',
+        backgroundColor: ['#191970'],
+        data: data.getWeeklySleepLog(date)
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+}
+
+const renderSleepChart2 = (data) => {
+  const date = data.sleepData.slice(-1)[0].date;
+  return new Chart(document.getElementById("sleepChart2"), {
+    type: 'bar',
+    data: {
+      labels: data.sleepData.slice(-7).map(sleep => sleep.date),
+      datasets: [{
+        label: 'Quality Score',
+        backgroundColor: ['#191970'],
+        data: data.getWeeklySleepQualityLog(date)
+      }]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
   });
 }
 
@@ -138,5 +202,8 @@ export {
   renderActivityChart2,
   renderActivityChart3,
   renderActivityChart4,
-  renderActivityChart5
+  renderActivityChart5,
+  renderSleepChart1,
+  renderSleepChart2,
+  renderWeeklyStepChart
 }
