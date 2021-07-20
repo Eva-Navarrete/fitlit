@@ -143,7 +143,12 @@ img {
   align-items: center;
 }
 
-.community-chart {
+.user-chart {
+  height: 100%;
+  width: 50%
+}
+
+.community-chart, .user-activity-chart {
   height: 100%;
   width: 100%;
 }
@@ -152,6 +157,8 @@ img {
   height: 100%;
   width: 35%;
 }
+
+
 
 /* MOBILE 📱 */
 @media screen and (max-width: 620px) {
@@ -174,7 +181,7 @@ img {
   }
 
   h2 {
-    font-size: 6vw;
+    font-size: 5vw;
   }
 
   p {
@@ -183,5 +190,9 @@ img {
 
   .average-sleep {
     font-size: 2.2vw;
+  }
+
+  .large-text {
+    font-size: 7vw;
   }
 }
