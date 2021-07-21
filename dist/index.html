@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <link rel="stylesheet" href="../src/css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title>Activity Tracker</title>
 </head>
+
 <body>
   <header>
     <h1>💪FitLit🔥</h1>
@@ -49,9 +51,9 @@
           </section>
           <section class="flip-card-back">
             <h2>Weekly Sleep Log</h2>
-              <div class="chart chart-center">
-                <canvas id="sleepChart1" width="100%" height="60%"></canvas>
-              </div>
+            <div class="chart chart-center">
+              <canvas id="sleepChart1" width="100%" height="60%"></canvas>
+            </div>
           </section>
         </div>
       </div>
@@ -86,17 +88,17 @@
           <section class="flip-card-front">
             <h2>Your Weekly Stats</h2>
             <div class="chart chart-center">
-              <div class="user-activity-chart">
+              <div class="stat-chart">
                 <canvas id="activityChart4" height="20%" width="30%"></></canvas>
               </div>
-              <div class="user-activity-chart">
+              <div class="stat-chart">
                 <canvas id="activityChart5" height="20%" width="30%"></></canvas>
               </div>
             </div>
           </section>
           <section class="flip-card-back">
             <h2>Community</h2>
-            <div class="community-chart chart-center">
+            <div class="stat-chart chart-center">
               <div class="activity-chart">
                 <canvas id="activityChart1" height="80%" width="100"></canvas>
               </div>
@@ -115,4 +117,5 @@
   <script src="bundle.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
+
 </html>

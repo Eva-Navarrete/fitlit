@@ -35,12 +35,12 @@ describe('User', () => {
 
     activity1 = new Activity(activityData[0]);
     activity2 = new Activity(activityData[1]);
-    activity3 = new Activity(activityData[2])
-    activity4 = new Activity(activityData[3])
-    activity5 = new Activity(activityData[4])
-    activity6 = new Activity(activityData[5])
-    activity7 = new Activity(activityData[6])
-    activity8 = new Activity(activityData[7])
+    activity3 = new Activity(activityData[2]);
+    activity4 = new Activity(activityData[3]);
+    activity5 = new Activity(activityData[4]);
+    activity6 = new Activity(activityData[5]);
+    activity7 = new Activity(activityData[6]);
+    activity8 = new Activity(activityData[7]);
 
     user1.hydrationData.push(hydration1);
     user1.hydrationData.push(hydration2);
@@ -106,7 +106,9 @@ describe('User', () => {
   });
 
   it('Should return user first name', () => {
-    expect(user1.returnName()).to.equal('Shay');
+    const firstName = user1.returnName();
+
+    expect(firstName).to.equal('Shay');
   });
 
   it('Should store a user\'s sleep data', () => {

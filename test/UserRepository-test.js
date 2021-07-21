@@ -34,11 +34,15 @@ describe('User Repository', () => {
   });
 
   it('should be able to return user data by ID', () => {
-    expect(userRepo.getUserData(1)).to.equal(user1);
+    const user = userRepo.getUserData(1);
+
+    expect(user).to.equal(user1);
   });
 
   it('should be able to return the average step goal of all users', () => {
-    expect(userRepo.getAllUsersAvgStepGoal()).to.equal(10000);
+    const stepGoal = userRepo.getAllUsersAvgStepGoal();
+
+    expect(stepGoal).to.equal(10000);
   });
 
   it('should be able to store all user\'s sleep data', () => {

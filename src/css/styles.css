@@ -1,5 +1,5 @@
 * {
-  font-family: 'Ubuntu', normal;
+  font-family: 'Ubuntu', sans-serif;
   color: black;
 }
 
@@ -138,7 +138,7 @@ img {
 }
 
 /* Charts */
-.chart {
+.chart  {
   height: 100%;
   width: 90%;
 }
@@ -149,7 +149,7 @@ img {
   align-items: center;
 }
 
-.community-chart, .user-activity-chart{
+.stat-chart {
   height: 100%;
   width: 100%;
 }
