@@ -1,82 +1,123 @@
 # FitLit Starter Kit
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+### Table of Contents
+- [Instructions](#instructions)
+- [Overview](#overview-and-project-goals)
+- [Features](#features)
+- [How does this work?](#how-does-this-work)
+- [Project Reflection](#project-reflection)
+- [How To Contribute](#want-to-contribute)
+- [Instructions for Project Setup](#Instructions-for-project-setup)
+- [Authors and Contributors](#credits)
 
-## Setup
+The details of this project are outline in [project spec](http://frontend.turing.io/projects/fitlit.html).
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+## Instructions
+1. To run this project we will need to clone this repository and the fitlit-api repository from [this](https://github.com/turingschool-examples/fitlit-api) link.
+2. From the terminal, `cd` into the fitlit-api repository.
+3. Run `npm install`
+4. Run `npm start`
+5. `cd` into the fitlit repository.
+6. Run `npm install`
+7. Run `npm start`
+8. Visit http://localhost:8080/. The project is now running.
 
-## Testing
+## Overview and Project Goals
+The [goal](https://frontend.turing.edu/projects/module-1/intention-timer-group.html) of this group project that was made for Mod1 at [Turing School of Software and Design](https://turing.io/) is to build a fitness tracking app from scratch using HTML, CSS, and Vanilla Javascript.
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+## Why was this project created?
+To solidify and demonstrate the understanding of:
+1. Writing clean and DRY HTML, CSS, and JS
+2. Learn fetch calls and how client-server interactions work
+3. Learn iterator methods and class to class interaction
+4. Learn mocha and chai testing
+5. Learn how to create a responsive layout across mobile and desktop devices
 
-## Linting Your Code
+## Features
+* A website that allows users to keep track of their activity, hydration, and sleep data. With a fun flip card feature that shows more information on hover. This way we can display more information overall without overloading the user with too much information at once.
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+**[Back to top](#table-of-contents)**
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+## How does this work?
+![FitLit Gif](https://user-images.githubusercontent.com/75854628/126412055-0c59ec38-7bb9-459d-b3b1-ca65a8328bc7.gif)
 
-## Data Model
+GitHub Page Link: https://github.com/Eva-Navarrete/fitlit
 
-**Users**
+**[Back to top](#table-of-contents)**
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+## Want to contribute?
 
-**Activity**
+## Instructions for Project Setup
+1. Clone this [repository.](https://github.com/Eva-Navarrete/fitlit)
+2. `cd` into the repository in your terminal.
+3. Then `npm start` in your terminal to view it on your browser.
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
+## Technologies Used
+<p align="left">
+  <img src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E" alt="javascript" />
+  <img src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white" alt="html5"/>
+  <img src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white" alt="CSS3"/>
+  <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="Github" />
+  <img src="https://dyclassroom.com/image/topic/mochajs-chaijs/logo.png" height"100px" width="100px"alt=" "Mocha & Chai"/>
+</p>
 
-**Hydration**
+## Project Reflection
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
+##### Wins
+* Finally got fetch to work
+* Creating charts for data
+* Learning responsive layout
+* Flip card
+* Practiced our iterator methods
 
-**Sleep**
+##### Challenges
+* Completely responsive layouts on charts
+* Fetching Data
+* Instantiate classes function
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
+##### Overall Impressions
+* It was a fun project to test our creativity!
+
+#### Future Features
+* Add calendar
+* Add Friends Data
+* Select User
+* Add avatars for users
+* Doughnut chart for sleep quality
+
+## Credits
+#### Authors
+<table>
+    <tr>
+          <td> Eric Li <a href="https://github.com/ericli1996">GH</td>
+    </tr>
+    </tr>
+ <td><img src="https://avatars.githubusercontent.com/u/75854628?v=4" alt="Maria GH img"
+width="150" height="auto" /></td>
+     <tr>
+          <td> Eva Navarrete <a href="https://github.com/Eva-Navarrete">GH</td>
+      </tr>
+      </tr>
+<td><img src="https://avatars.githubusercontent.com/u/68021391?v=4" alt="Eva GH img"
+width="150" height="auto" /></td>
+    </tr>
+</table>
+
+#### Reviewers
+* None
+
+#### Project Manager
+<table>
+    <tr>
+         <td> Cassandra Torske <a href="https://github.com/CassandraGoose">GH</td>
+    </tr>
+    </tr>
+    <td><img src="https://avatars.githubusercontent.com/u/21070575?v=4" alt="Heather GH img"
+ width="150" height="auto" /></td>
+</tr>
+</table>
+
+**************************************************************************
+###### This project was created for [Turing School of Software and Design](https://turing.io/)
+###### 2021/07/20
+**[Back to top](#table-of-contents)**
