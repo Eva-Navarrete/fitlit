@@ -1,50 +1,45 @@
 # FitLit Starter Kit
 
 ### Table of Contents
-- [Setup](#setup)
+- [Instructions](#instructions)
 - [Overview](#overview-and-project-goals)
 - [Features](#features)
 - [How does this work?](#how-does-this-work)
 - [Project Reflection](#project-reflection)
 - [How To Contribute](#want-to-contribute)
-- [Instructions for Running Project](#Instructions-for-running-project)
+- [Instructions for Project Setup](#Instructions-for-project-setup)
 - [Authors and Contributors](#credits)
 
 The details of this project are outline in [project spec](http://frontend.turing.io/projects/fitlit.html).
 
-## Setup
-
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `npm start` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
-
-## Testing
-
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
-
+## Instructions
+1. To run this project we will need to clone this repository and the fitlit-api repository from [this](https://github.com/turingschool-examples/fitlit-api) link.
+2. From the terminal, `cd` into the fitlit-api repository.
+3. Run `npm install`
+4. Run `npm start`
+5. `cd` into the fitlit repository.
+6. Run `npm install`
+7. Run `npm start`
+8. Visit http://localhost:8080/. The project is now running.
 
 ## Overview and Project Goals
-The [goal](https://frontend.turing.edu/projects/module-1/intention-timer-group.html) of this group project that was made for Mod1 at [Turing School of Software and Design](https://turing.io/) is to build a Intention Timer from scratch using HTML, CSS, and Vanilla Javascript.
+The [goal](https://frontend.turing.edu/projects/module-1/intention-timer-group.html) of this group project that was made for Mod1 at [Turing School of Software and Design](https://turing.io/) is to build a fitness tracking app from scratch using HTML, CSS, and Vanilla Javascript.
 
 ## Why was this project created?
 To solidify and demonstrate the understanding of:
-1. writing clean and DRY HTML, CSS, and JS
-2. understand the difference between the data model and how the data is displayed on the DOM
-3. the interaction between multiple class files
-4. implementation of client-side data persistence by utilizing JSON and localStorage
+1. Writing clean and DRY HTML, CSS, and JS
+2. Learn fetch calls and how client-server interactions work
+3. Learn iterator methods and class to class interaction
+4. Learn mocha and chai testing
+5. Learn how to create a responsive layout across mobile and desktop devices
 
 ## Features
-* A website that allows users to set a timer for one of three selected activities. User can input the description of their activity and select a time of duration that they would like to take part in.
-* User can log that activity and add as many activities as they would like.
+* A website that allows users to keep track of their activity, hydration, and sleep data. With a fun flip card feature that shows more information on hover. This way we can display more information overall without overloading the user with too much information at once.
 
 **[Back to top](#table-of-contents)**
 
 ## How does this work?
-![]()
-![]()
-![]()
+![FitLit Gif](https://user-images.githubusercontent.com/75854628/126412055-0c59ec38-7bb9-459d-b3b1-ca65a8328bc7.gif)
 
 GitHub Page Link: https://github.com/Eva-Navarrete/fitlit
 
@@ -52,8 +47,7 @@ GitHub Page Link: https://github.com/Eva-Navarrete/fitlit
 
 ## Want to contribute?
 
-
-## Instructions for Running Project
+## Instructions for Project Setup
 1. Clone this [repository.](https://github.com/Eva-Navarrete/fitlit)
 2. `cd` into the repository in your terminal.
 3. Then `npm start` in your terminal to view it on your browser.
@@ -70,20 +64,26 @@ GitHub Page Link: https://github.com/Eva-Navarrete/fitlit
 ## Project Reflection
 
 ##### Wins
-* some text here
-* some text here
+* Finally got fetch to work
+* Creating charts for data
+* Learning responsive layout
+* Flip card
+* Practiced our iterator methods
 
 ##### Challenges
-* some text here
-* some text here
+* Completely responsive layouts on charts
+* Fetching Data
+* Instantiate classes function
 
 ##### Overall Impressions
-* some text here
-* some text here
+* It was a fun project to test our creativity!
 
 #### Future Features
 * Add calendar
 * Add Friends Data
+* Select User
+* Add avatars for users
+* Doughnut chart for sleep quality
 
 ## Credits
 #### Authors
