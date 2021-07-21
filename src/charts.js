@@ -17,7 +17,7 @@ const renderHydrationChart = (data) => {
         }
       }
     }
-  });
+  })
 }
 
 const renderWeeklyStepChart = (data) => {
@@ -38,7 +38,7 @@ const renderWeeklyStepChart = (data) => {
         }
       }
     }
-  });
+  })
 }
 
 const renderSleepChart1 = (data) => {
@@ -64,7 +64,7 @@ const renderSleepChart1 = (data) => {
         }
       }
     }
-  });
+  })
 }
 
 const renderSleepChart2 = (data) => {
@@ -86,11 +86,11 @@ const renderSleepChart2 = (data) => {
         }
       }
     }
-  });
+  })
 }
 
 const renderActivityChart1 = (data, repoData) => {
-  const date = data.activityData.slice(-1)[0].date
+  const date = data.activityData.slice(-1)[0].date;
   return new Chart(document.getElementById("activityChart1"), {
     type: 'bar',
     data: {
@@ -154,7 +154,6 @@ const renderActivityChart3 = (data, repoData) => {
 const renderActivityChart4 = (data) => {
   const date = data.activityData.slice(-1)[0].date;
   return new Chart(document.getElementById("activityChart4"), {
-
     type: 'line',
     data: {
       labels: data.activityData.slice(-7).map(active => active.date),
